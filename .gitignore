@@ -52,3 +52,60 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Visual Studio
+.vs/
+.vscode/
+*.psess
+*.vsp
+*.pidb
+*.sdf
+*.opensdf
+*.tlog
+
+# Rider
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# .NET Debug & Build Outputs
+bin/
+obj/
+*.pdb
+*.dll
+*.exe
+*.cache
+*.log
+*.tmp
+*.dbg
+*.bak
+*.db
+
+# Visual Studio Debugger
+*.vshost.*
+*.vsp
+*.psess
+
+# Angular Debug
+.angular/
+*.log
+*.map
+
+# OS & IDE Junk (just in case)
+.DS_Store
+Thumbs.db
+*.suo
+*.user
+
+# Ensure Visual Studio hidden folder is excluded
+.vs/
+
+# Exclude versioned folders like v17/, v16/, etc., anywhere in the repo
+**/v*/        # Catches version folders at any depth
+
