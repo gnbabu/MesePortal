@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Implementation\" />
-    <Folder Include="Models\" />
-    <Folder Include="SQL\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\Maximus.Mese.Core\Maximus.Mese.Core.csproj" />
   </ItemGroup>
 
 </Project>
