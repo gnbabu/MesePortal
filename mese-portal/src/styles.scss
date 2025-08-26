@@ -1,0 +1,185 @@
+// Instead of @import, use @use
+@use "bootstrap/scss/bootstrap" as *;
+
+// Bootstrap Icons (still CSS, so keep import here)
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+
+// ✅ Define SCSS variables (instead of :root custom properties)
+$primary-dark: #2c3e50;
+$primary-light: #34495e;
+$accent-blue: #3498db;
+$accent-red: #e74c3c;
+$text-light: #f8f9fa;
+$border-light: #dee2e6;
+
+// Global
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: $text-light;
+}
+
+// Sidebar
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100vh;
+  background-color: $primary-light;
+  color: #fff;
+  transition: all 0.3s;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  z-index: 1030;
+  overflow-y: auto;
+
+  &.active {
+    left: 0;
+  }
+
+  .nav-link {
+    color: #ddd;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+  }
+
+  .sidebar-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 15px;
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
+
+// Content
+#content {
+  flex: 1;
+  margin-left: 0;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .nav-link {
+    color: #ddd;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+  }
+
+  .navbar-brand {
+    color: #ddd;
+    background-color: $primary-light;
+  }
+}
+
+#sidebar.active ~ #content {
+  margin-left: 250px;
+}
+
+// Topbar
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1020;
+  transition: all 0.3s;
+  background-color: $primary-light;
+}
+
+#sidebar.active ~ #content {
+  .topbar {
+    margin-left: 250px;
+  }
+}
+
+// Page content
+.page-content {
+  margin-top: 56px;
+  padding: 20px;
+  flex: 1;
+}
+
+// Footer
+footer {
+  background-color: $primary-light;
+  color: #fff;
+  padding: 40px 0;
+
+  h5 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      a {
+        color: #ccc;
+        text-decoration: none;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// Login
+.login-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+  .login-btn {
+    width: 100%;
+    background-color: #6c63ff;
+    border: none;
+
+    &:hover {
+      background-color: #5848e5;
+    }
+  }
+
+  .forgot-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+// News
+.news-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
