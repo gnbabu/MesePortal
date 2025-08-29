@@ -23,3 +23,13 @@ export interface IPermissionsResponse {
   userRoles: IRole[];
   permissions: IPermission[];
 }
+
+export interface IMenu {
+  id: string; // unique key
+  label: string; // display name
+  icon?: string; // optional bootstrap icon
+  iconClass?: string; // optional bootstrap icon class
+  route?: string; // navigation path
+  order: number; // display order
+  isPublic?: boolean; // visible without login
+}

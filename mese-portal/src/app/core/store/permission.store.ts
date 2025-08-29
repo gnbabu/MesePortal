@@ -6,6 +6,7 @@ import { UsersService } from '../services/user.service';
 import { IPermission, IRole } from '../models/core.models';
 import { AuthStore } from './auth.store';
 import { firstValueFrom } from 'rxjs';
+import { MenuStore } from './menu.store';
 
 export interface PermissionsState {
   roles: IRole[];
@@ -26,12 +27,14 @@ export const PermissionsStore = signalStore(
   withMethods((store) => {
     const usersService = inject(UsersService);
     const authStore = inject(AuthStore);
+    const menuStore = inject(MenuStore);
 
     return {
       async loadPermissions() {
         const token = authStore.token(); // get token from AuthStore
         if (!token) {
           patchState(store, { roles: [], permissions: [], loading: false });
+          menuStore.resetMenus();
           return;
         }
 
@@ -50,11 +53,18 @@ export const PermissionsStore = signalStore(
             usersService.getUserRolesandPermissions(user.userId)
           );
 
-          patchState(store, {
-            roles: response?.userRoles ?? [],
-            permissions: response?.permissions ?? [],
-            loading: false,
-          });
+          const roles = response?.userRoles ?? [];
+          const permissions = response?.permissions ?? [];
+
+          patchState(store, { roles, permissions, loading: false });
+
+          // ✅ Load menus based on permission IDs
+          debugger;
+          const allowedMenuIds = permissions
+            .filter((p) => p.type === 'MENU' && p.code) // only MENU type with a code
+            .map((p) => p.code.toLowerCase()); // extract the code
+
+          menuStore.loadUserMenus(allowedMenuIds);
         } catch (err) {
           console.error('Failed to load permissions:', err);
           patchState(store, { roles: [], permissions: [], loading: false });
@@ -63,6 +73,7 @@ export const PermissionsStore = signalStore(
 
       clearPermissions() {
         patchState(store, { roles: [], permissions: [] });
+        menuStore.resetMenus();
       },
     };
   })
