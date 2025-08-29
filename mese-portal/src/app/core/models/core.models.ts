@@ -32,4 +32,5 @@ export interface IMenu {
   route?: string; // navigation path
   order: number; // display order
   isPublic?: boolean; // visible without login
+  permissionCode: string;
 }

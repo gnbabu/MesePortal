@@ -62,7 +62,7 @@ export const PermissionsStore = signalStore(
           debugger;
           const allowedMenuIds = permissions
             .filter((p) => p.type === 'MENU' && p.code) // only MENU type with a code
-            .map((p) => p.code.toLowerCase()); // extract the code
+            .map((p) => p.code); // extract the code
 
           menuStore.loadUserMenus(allowedMenuIds);
         } catch (err) {
@@ -74,6 +74,23 @@ export const PermissionsStore = signalStore(
       clearPermissions() {
         patchState(store, { roles: [], permissions: [] });
         menuStore.resetMenus();
+      },
+      // ✅ Check if user has a single permission
+      hasPermission(permissionCode: string): boolean {
+        return store.permissions().some((p) => p.code === permissionCode);
+      },
+
+      // ✅ Check if user has all of the provided permissions
+      hasPermissions(permissionCodes: string[]): boolean {
+        debugger;
+        const userPerms = store.permissions().map((p) => p.code);
+        return permissionCodes.every((code) => userPerms.includes(code));
+      },
+
+      // ✅ Check if user has at least one of the provided permissions
+      hasAnyPermission(permissionCodes: string[]): boolean {
+        const userPerms = store.permissions().map((p) => p.code);
+        return permissionCodes.some((code) => userPerms.includes(code));
       },
     };
   })

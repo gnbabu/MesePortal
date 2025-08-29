@@ -26,7 +26,7 @@ export class LoginComponent {
       this.authService.login(this.loginRequest).subscribe({
         next: () => {
           // AuthStore updated automatically
-          this.router.navigateByUrl('/dashboard');
+          //this.router.navigateByUrl('/dashboard');
         },
         error: (err) => {
           console.error('Login failed', err);

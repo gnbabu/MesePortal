@@ -12,6 +12,7 @@ $accent-blue: #3498db;
 $accent-red: #e74c3c;
 $text-light: #f8f9fa;
 $border-light: #dee2e6;
+$accent: #1abc9c; // Teal accent to contrast with #34495e
 
 // Global
 html, body {
@@ -24,8 +25,7 @@ body {
   flex-direction: column;
   background-color: $text-light;
 }
-
-// Sidebar
+//Sidebar
 #sidebar {
   min-width: 250px;
   max-width: 250px;
@@ -41,14 +41,22 @@ body {
 
   &.active {
     left: 0;
+    border-right: 4px solid $accent;
+    box-shadow: 4px 0 12px rgba(26, 188, 156, 0.6); // glowing effect
   }
 
   .nav-link {
     color: #ddd;
+    transition: all 0.3s;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.05)
+      );
       color: #fff;
+      padding-left: 20px; // subtle slide effect on hover
     }
   }
 
@@ -64,9 +72,16 @@ body {
       font-size: 1.5rem;
       color: #fff;
       cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        color: $accent;
+        transform: rotate(90deg);
+      }
     }
   }
 }
+
 
 // Content
 #content {
@@ -150,7 +165,7 @@ footer {
 
 // Login
 .login-container {
-  max-width: 400px;
+  max-width: 500px;
   margin: 40px auto;
   background: #fff;
   padding: 30px;
@@ -158,7 +173,7 @@ footer {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
   .login-btn {
-    width: 100%;
+    width: 30%;
     background-color: #6c63ff;
     border: none;
 
@@ -176,7 +191,7 @@ footer {
 
 // News
 .news-section {
-  max-width: 900px;
+  // max-width: 900px;
   margin: 40px auto;
   padding: 20px;
   background: #fff;

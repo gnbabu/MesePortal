@@ -9,6 +9,7 @@ export const ALL_MENUS: IMenu[] = [
     route: '/skip',
     order: 0,
     isPublic: true,
+    permissionCode: 'SKIP.VIEW',
   },
   {
     id: 'medicaid',
@@ -17,6 +18,7 @@ export const ALL_MENUS: IMenu[] = [
     route: '/medicaid',
     order: 1,
     isPublic: true,
+    permissionCode: 'MEDICAID.VIEW',
   },
   {
     id: 'home',
@@ -25,15 +27,18 @@ export const ALL_MENUS: IMenu[] = [
     route: '/home',
     order: 2,
     isPublic: true,
+    permissionCode: 'HOME.VIEW',
   },
 
-  // Protected menus
+  // Protected menus (all have isPublic: false)
   {
     id: 'myqueue',
     label: 'My Queue',
     icon: 'bi-list-task',
     route: '/myqueue',
     order: 3,
+    isPublic: false,
+    permissionCode: 'MYQUEUE.VIEW',
   },
   {
     id: 'providersearch',
@@ -41,6 +46,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-search',
     route: '/providersearch',
     order: 4,
+    isPublic: false,
+    permissionCode: 'PROVIDERSEARCH.VIEW',
   },
   {
     id: 'ownersearch',
@@ -48,6 +55,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-person-search',
     route: '/ownersearch',
     order: 5,
+    isPublic: false,
+    permissionCode: 'OWNERSEARCH.VIEW',
   },
   {
     id: 'providerdirectory',
@@ -55,6 +64,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-people',
     route: '/providerdirectory',
     order: 6,
+    isPublic: false,
+    permissionCode: 'PROVIDERDIRECTORY.VIEW',
   },
   {
     id: 'gissearch',
@@ -62,15 +73,17 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-geo-alt',
     route: '/gissearch',
     order: 7,
+    isPublic: false,
+    permissionCode: 'GISSEARCH.VIEW',
   },
-
-  // More protected menus
   {
     id: 'profile',
     label: 'My Profile',
     icon: 'bi-person-circle',
     route: '/profile',
     order: 8,
+    isPublic: false,
+    permissionCode: 'PROFILE.VIEW',
   },
   {
     id: 'dashboard',
@@ -78,6 +91,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-speedometer2',
     route: '/dashboard',
     order: 9,
+    isPublic: false,
+    permissionCode: 'DASHBOARD.VIEW',
   },
   {
     id: 'sitevisit',
@@ -85,6 +100,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-map',
     route: '/sitevisit',
     order: 10,
+    isPublic: false,
+    permissionCode: 'SITEVISIT.VIEW',
   },
   {
     id: 'transaction',
@@ -92,6 +109,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-search-heart',
     route: '/transaction',
     order: 11,
+    isPublic: false,
+    permissionCode: 'TRANSACTION.VIEW',
   },
   {
     id: 'useradmin',
@@ -99,6 +118,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-people-fill',
     route: '/useradmin',
     order: 12,
+    isPublic: false,
+    permissionCode: 'USERADMIN.VIEW',
   },
   {
     id: 'refdata',
@@ -106,6 +127,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-journal-text',
     route: '/refdata',
     order: 13,
+    isPublic: false,
+    permissionCode: 'REFDATA.VIEW',
   },
   {
     id: 'workflow',
@@ -113,6 +136,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-arrow-repeat',
     route: '/workflow',
     order: 14,
+    isPublic: false,
+    permissionCode: 'WORKFLOW.VIEW',
   },
   {
     id: 'reports',
@@ -120,6 +145,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-bar-chart-line',
     route: '/reports',
     order: 15,
+    isPublic: false,
+    permissionCode: 'REPORTS.VIEW',
   },
   {
     id: 'apm',
@@ -127,6 +154,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-award',
     route: '/apm',
     order: 16,
+    isPublic: false,
+    permissionCode: 'APM.VIEW',
   },
   {
     id: 'ordering',
@@ -134,6 +163,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-pencil-square',
     route: '/ordering',
     order: 17,
+    isPublic: false,
+    permissionCode: 'ORDERING.VIEW',
   },
   {
     id: 'eligibility',
@@ -141,6 +172,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-person-check',
     route: '/eligibility',
     order: 18,
+    isPublic: false,
+    permissionCode: 'ELIGIBILITY.VIEW',
   },
   {
     id: 'specialty',
@@ -148,6 +181,8 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-briefcase',
     route: '/specialty',
     order: 19,
+    isPublic: false,
+    permissionCode: 'SPECIALTY.VIEW',
   },
   {
     id: 'education',
@@ -155,5 +190,7 @@ export const ALL_MENUS: IMenu[] = [
     icon: 'bi-book',
     route: '/education',
     order: 20,
+    isPublic: false,
+    permissionCode: 'EDUCATION.VIEW',
   },
 ];

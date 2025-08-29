@@ -23,6 +23,7 @@ export class AuthService {
 
           // ✅ immediately load permissions
           await this.permissionsStore.loadPermissions();
+          this.router.navigateByUrl('/dashboard');
         })
       );
   }

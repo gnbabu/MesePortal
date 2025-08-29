@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { MasterLayoutComponent } from './layout/master-layout.component';
+import { authGuard } from './core/guards/auth.guard';
+import { permissionsGuard } from './core/guards/permissions.guard';
 
 export const routes: Routes = [
   {
@@ -12,6 +14,7 @@ export const routes: Routes = [
         path: 'login',
         loadComponent: () =>
           import('./pages/login/login.component').then((m) => m.LoginComponent),
+        canActivate: [authGuard],
       }, // login inside layout
       {
         path: 'dashboard',
@@ -19,8 +22,16 @@ export const routes: Routes = [
           import('./features/dashboard/dashboard.component').then(
             (m) => m.DashboardComponent
           ),
+        canActivate: [authGuard, permissionsGuard],
+        data: { permissions: ['DASHBOARD.VIEW'] },
       },
-      // add more routes here
+      {
+        path: 'forbidden',
+        loadComponent: () =>
+          import('./pages/forbidden/forbidden.component').then(
+            (m) => m.ForbiddenComponent
+          ),
+      },
     ],
   },
   { path: '**', redirectTo: '' },

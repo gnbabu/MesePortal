@@ -23,7 +23,7 @@ export const MenuStore = signalStore(
     loadUserMenus(allowedIds: string[]) {
       const userMenus = store
         .allMenus()
-        .filter((m) => m.isPublic || allowedIds.includes(m.id))
+        .filter((m) => m.isPublic || allowedIds.includes(m.permissionCode))
         .sort((a, b) => a.order - b.order);
 
       patchState(store, { menus: userMenus });

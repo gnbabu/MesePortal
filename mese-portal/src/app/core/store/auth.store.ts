@@ -37,5 +37,8 @@ export const AuthStore = signalStore(
     get isLoggedIn() {
       return computed(() => !!store.token());
     },
+    get username() {
+      return computed(() => store.user()?.userName ?? '');
+    },
   }))
 );
