@@ -2,7 +2,6 @@ import { signalStore, withState, withMethods, patchState } from '@ngrx/signals';
 import { computed, inject } from '@angular/core';
 import { IUser } from '../models/core.models';
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
-import { PermissionsStore } from './permission.store';
 
 export interface AuthState {
   token: string | null;
@@ -28,6 +27,11 @@ export const AuthStore = signalStore(
       patchState(store, { token: null, user: null });
       localStorage.removeItem('mese_token');
       localStorage.removeItem('mese_user');
+    },
+    loadAuthFromStorage() {
+      const token = localStorage.getItem('mese_token');
+      const user = JSON.parse(localStorage.getItem('mese_user') || 'null');
+      patchState(store, { token, user });
     },
     // Computed signals must be defined as a **getter method**
     get isLoggedIn() {
