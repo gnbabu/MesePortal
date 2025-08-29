@@ -1,0 +1,42 @@
+<div class="login-container">
+  <h3>Login</h3>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <div class="mb-3">
+      <label for="userName" class="form-label">Please enter your User ID</label>
+      <input
+        type="text"
+        class="form-control"
+        id="userName"
+        name="userName"
+        placeholder="User ID"
+        [(ngModel)]="loginRequest.userName"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label"
+        >Please enter your Password</label
+      >
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Password"
+        [(ngModel)]="loginRequest.password"
+        required
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary login-btn"
+      [disabled]="loginForm.invalid"
+    >
+      Log In
+    </button>
+    <a href="#" class="forgot-link text-danger">Forgot/Reset Password?</a>
+  </form>
+</div>
+
+<!-- News Section -->
+<app-news></app-news>

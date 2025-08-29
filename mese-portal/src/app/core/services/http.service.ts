@@ -1,22 +1,22 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
-import { catchError, map } from "rxjs/operators";
-import { environment } from "../../../environments/environment";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class HttpService {
   constructor(private http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     });
   }
 
   private fullUrl(url: string): string {
     // Automatically appends the base URL if not already absolute
-    return url.startsWith("http") ? url : `${environment.apiUrl}/${url}`;
+    return url.startsWith('http') ? url : `${environment.apiUrl}/${url}`;
   }
 
   get<T>(
@@ -81,19 +81,19 @@ export class HttpService {
     if (error.status === 0) {
       // Network error or CORS or server down
       console.log(
-        "Server is unreachable. Please try again later.",
-        "Network Error"
+        'Server is unreachable. Please try again later.',
+        'Network Error'
       );
     } else if (error.status >= 500) {
       // Internal Server Error
       console.log(
-        "Server error occurred. Please try again.",
+        'Server error occurred. Please try again.',
         `Error ${error.status}`
       );
     } else {
       // Other errors (like 400, 404)
       console.log(
-        error.message || "Unexpected error occurred.",
+        error.message || 'Unexpected error occurred.',
         `Error ${error.status}`
       );
     }

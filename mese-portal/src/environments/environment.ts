@@ -1,4 +1,5 @@
 export const environment = {
-  apiUrl: 'https://localhost:7147/api',
-  displayName: 'Development Environment',
+  production: false,
+  apiUrl: 'https://localhost:7040/api',
+  displayName: 'Development Environment By Vishnu',
 };

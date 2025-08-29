@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <!-- Host must be the #sidebar element -->
+  <app-left-sidebar
+    id="sidebar"
+    [class.active]="sidebarActive"
+    [sidebarActive]="sidebarActive"
+    (close)="closeSidebar()"
+  ></app-left-sidebar>
+
+  <!-- Content must be a sibling that comes AFTER #sidebar -->
+  <div id="content">
+    <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <app-footer></app-footer>
+  </div>
+</div>

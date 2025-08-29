@@ -1,0 +1,46 @@
+<p>left-sidebar works!</p>
+<div id="sidebar" [class.active]="sidebarActive">
+  <div class="sidebar-header">
+    <button class="close-btn" (click)="close.emit()">&times;</button>
+  </div>
+  <ul class="nav flex-column p-2">
+    <li class="nav-item">
+      <a class="nav-link" href="#"
+        ><i class="bi bi-arrow-right-short me-2"></i>Skip To Main Content</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"
+        ><i class="bi bi-house-door me-2"></i>Medicaid Home</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"><i class="bi bi-house me-2"></i>Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"
+        ><i class="bi bi-list-task me-2"></i>My Queue</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"
+        ><i class="bi bi-search me-2"></i>Provider Search</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"
+        ><i class="bi bi-person-search me-2"></i>Owner Search</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"
+        ><i class="bi bi-people me-2"></i>Provider Directory</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"
+        ><i class="bi bi-geo-alt me-2"></i>Provider Search - GIS</a
+      >
+    </li>
+  </ul>
+</div>
