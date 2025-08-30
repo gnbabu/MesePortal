@@ -5,7 +5,7 @@
   </div>
   <ul class="nav flex-column p-2">
     <li class="nav-item" *ngFor="let menu of menuStore.menus()">
-      <a class="nav-link" [href]="menu.route">
+      <a class="nav-link" [routerLink]="[menu.route]">
         <i class="bi me-2" [ngClass]="menu.icon"></i>
         {{ menu.label }}
       </a>

@@ -32,6 +32,53 @@ export const routes: Routes = [
             (m) => m.ForbiddenComponent
           ),
       },
+      {
+        path: 'medicaidhome',
+        loadComponent: () =>
+          import('./pages/medicaid-home/medicaid-home.component').then(
+            (m) => m.MedicaidHomeComponent
+          ),
+      },
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./pages/home/home.component').then((m) => m.HomeComponent),
+      },
+      {
+        path: 'providerdirectory',
+        loadComponent: () =>
+          import(
+            './pages/provider-directory/provider-directory.component'
+          ).then((m) => m.ProviderDirectoryComponent),
+      },
+      {
+        path: 'gissearch',
+        loadComponent: () =>
+          import(
+            './pages/provider-search-gis/provider-search-gis.component'
+          ).then((m) => m.ProviderSearchGisComponent),
+      },
+      {
+        path: 'provider-training',
+        loadComponent: () =>
+          import('./pages/provider-training/provider-training.component').then(
+            (m) => m.ProviderTrainingComponent
+          ),
+      },
+      {
+        path: 'contactus',
+        loadComponent: () =>
+          import('./pages/contactus/contactus.component').then(
+            (m) => m.ContactusComponent
+          ),
+      },
+      {
+        path: 'feeschedule',
+        loadComponent: () =>
+          import('./pages/fee-schedule/fee-schedule.component').then(
+            (m) => m.FeeScheduleComponent
+          ),
+      },
     ],
   },
   { path: '**', redirectTo: '' },
