@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterOutlet } from '@angular/router';
+import { ProgressBarComponent } from '../shared/components/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-master-layout',
@@ -12,6 +13,7 @@ import { RouterOutlet } from '@angular/router';
     HeaderComponent,
     LeftSidebarComponent,
     FooterComponent,
+    ProgressBarComponent,
   ],
   templateUrl: './master-layout.component.html',
   styleUrl: './master-layout.component.scss',

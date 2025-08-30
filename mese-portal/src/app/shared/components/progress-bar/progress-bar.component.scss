@@ -1,0 +1,68 @@
+// Variables (optional, for easy customization)
+$loader-size: 50px;
+$overlay-bg: rgba(255, 255, 255, 0.6);
+$gradient-colors: #00f0ff, #8f00ff, #ff00c8, #00f0ff;
+
+.main-loader-overlay {
+  position: absolute;
+  inset: 0;
+  background: $overlay-bg;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .circle-loader {
+    width: $loader-size;
+    height: $loader-size;
+    border-radius: 50%;
+    background: conic-gradient($gradient-colors);
+    mask: radial-gradient(farthest-side, transparent 60%, black 61%);
+    -webkit-mask: radial-gradient(farthest-side, transparent 60%, black 61%);
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+//Full Page Progress
+// // Variables
+// $loader-size: 50px;
+// $overlay-bg: rgba(255, 255, 255, 0.6);
+// $gradient-colors: #00f0ff, #8f00ff, #ff00c8, #00f0ff;
+
+// .main-loader-overlay {
+//   position: fixed; // cover entire viewport
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   background: $overlay-bg;
+//   backdrop-filter: blur(4px);
+//   z-index: 9999; // make sure it is on top of everything
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   .circle-loader {
+//     width: $loader-size;
+//     height: $loader-size;
+//     border-radius: 50%;
+//     background: conic-gradient($gradient-colors);
+//     mask: radial-gradient(farthest-side, transparent 60%, black 61%);
+//     -webkit-mask: radial-gradient(farthest-side, transparent 60%, black 61%);
+//     animation: spin 1s linear infinite;
+//   }
+// }
+
+// @keyframes spin {
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+

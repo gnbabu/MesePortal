@@ -1,3 +1,4 @@
+<app-progress-bar></app-progress-bar>
 <div class="wrapper">
   <!-- Host must be the #sidebar element -->
   <app-left-sidebar
@@ -10,6 +11,7 @@
   <!-- Content must be a sibling that comes AFTER #sidebar -->
   <div id="content">
     <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+    <!-- Global loader -->
 
     <div class="page-content">
       <router-outlet></router-outlet>

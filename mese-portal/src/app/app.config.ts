@@ -12,12 +12,13 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AuthStore } from './core/store/auth.store';
 import { authInterceptor } from './core/interceptors/auth-interceptor';
 import { AppInitService } from './core/services/appInit.service';
+import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     AuthStore,
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, loadingInterceptor])),
     provideRouter(routes),
     // APP_INITIALIZER with async support
     // Load Menus and permissions on refresh
