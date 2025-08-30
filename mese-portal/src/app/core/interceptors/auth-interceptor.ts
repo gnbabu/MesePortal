@@ -25,7 +25,12 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(authReq).pipe(
     catchError((error: HttpErrorResponse) => {
-      if (error.status === 401) {
+      if (error.status === 0) {
+        // Network/server error
+        alert(
+          'Cannot connect to server. Please check your internet or server status.'
+        );
+      } else if (error.status === 401) {
         // Token invalid or expired
         authService.logout(); // clears store + navigates
       }
