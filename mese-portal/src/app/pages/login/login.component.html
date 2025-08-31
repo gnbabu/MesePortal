@@ -1,28 +1,35 @@
 <div class="login-container">
-  <h3>Login</h3>
+  <h3 [appText]="'app.login.title'"></h3>
   <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
     <div class="mb-3">
-      <label for="userName" class="form-label">Please enter your User ID</label>
+      <label
+        for="userName"
+        class="form-label"
+        [appText]="'app.login.username'"
+      ></label>
       <input
         type="text"
         class="form-control"
         id="userName"
         name="userName"
         placeholder="User ID"
+        [appTextPlaceholder]="'app.login.username'"
         [(ngModel)]="loginRequest.userName"
         required
       />
     </div>
     <div class="mb-3">
-      <label for="password" class="form-label"
-        >Please enter your Password</label
-      >
+      <label
+        for="password"
+        class="form-label"
+        [appText]="'app.login.password'"
+      ></label>
       <input
         type="password"
         class="form-control"
         id="password"
         name="password"
-        placeholder="Password"
+        [appTextPlaceholder]="'app.login.password'"
         [(ngModel)]="loginRequest.password"
         required
       />
@@ -31,10 +38,13 @@
       type="submit"
       class="btn btn-primary login-btn"
       [disabled]="loginForm.invalid"
-    >
-      Log In
-    </button>
-    <a href="#" class="forgot-link text-danger">Forgot/Reset Password?</a>
+      [appText]="'app.login.loginButton'"
+    ></button>
+    <a
+      href="#"
+      class="forgot-link text-danger"
+      [appText]="'app.login.forgotPassword'"
+    ></a>
   </form>
 </div>
 

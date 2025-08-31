@@ -48,7 +48,7 @@ export const PermissionsStore = signalStore(
             return;
           }
           patchState(store, { loading: true });
-          debugger;
+
           const response = await firstValueFrom(
             usersService.getUserRolesandPermissions(user.userId)
           );
@@ -59,7 +59,7 @@ export const PermissionsStore = signalStore(
           patchState(store, { roles, permissions, loading: false });
 
           // ✅ Load menus based on permission IDs
-          debugger;
+
           const allowedMenuIds = permissions
             .filter((p) => p.type === 'MENU' && p.code) // only MENU type with a code
             .map((p) => p.code); // extract the code
@@ -82,7 +82,6 @@ export const PermissionsStore = signalStore(
 
       // ✅ Check if user has all of the provided permissions
       hasPermissions(permissionCodes: string[]): boolean {
-        debugger;
         const userPerms = store.permissions().map((p) => p.code);
         return permissionCodes.every((code) => userPerms.includes(code));
       },

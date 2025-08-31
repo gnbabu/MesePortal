@@ -19,6 +19,7 @@ export class AuthService {
       .pipe(
         tap(async (response) => {
           // ✅ set token & user
+
           this.authStore.setAuth(response.token, response.user);
 
           // ✅ immediately load permissions

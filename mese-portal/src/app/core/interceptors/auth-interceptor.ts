@@ -10,7 +10,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
 
   // Skip login API
-  debugger;
+
   if (req.url.endsWith('Authentication/login')) {
     return next(req);
   }

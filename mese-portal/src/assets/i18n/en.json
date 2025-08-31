@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name": "My Application",
+    "actions": {
+      "submit": "Submit",
+      "cancel": "Cancel"
+    },
+    "login": {
+      "title": "Login",
+      "username": "Please enter your User ID",
+      "password": "Please enter your Password",
+      "forgotPassword": "Forgot/Reset Password?",
+      "loginButton":"Login"
+    },
+    "menu": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "profile": "My Profile"
+    }
+  }
+}

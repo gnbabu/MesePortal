@@ -6,11 +6,19 @@ import { Router } from '@angular/router';
 import { ILoginRequest } from '../../core/models/core.models';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AppTextDirective } from '../../shared/directives/app-text/app-text.directive';
+import { AppTextPlaceholderDirective } from '../../shared/directives/app-text/app-text-placeholder.directive';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NewsComponent, CommonModule, FormsModule],
+  imports: [
+    NewsComponent,
+    CommonModule,
+    FormsModule,
+    AppTextDirective,
+    AppTextPlaceholderDirective,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -21,7 +29,6 @@ export class LoginComponent {
   loginRequest: ILoginRequest = { userName: '', password: '' };
 
   onSubmit(form: NgForm) {
-    debugger;
     if (form.valid) {
       this.authService.login(this.loginRequest).subscribe({
         next: () => {

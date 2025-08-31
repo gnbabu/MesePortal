@@ -14,7 +14,6 @@ export class UsersService {
   }
 
   getUserRolesandPermissions(userId: number): Observable<IPermissionsResponse> {
-    debugger;
     return this.httpService.get<IPermissionsResponse>(
       `Users/${userId}/permissions`,
       {}
