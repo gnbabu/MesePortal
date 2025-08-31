@@ -1,0 +1,67 @@
+.provider-dashboard-header {
+  .header-tabs {
+    .btn-tab {
+      background-color: #5c3c9e;
+      color: #fff;
+      font-weight: 500;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #43297d;
+      }
+    }
+  }
+
+  .header-actions {
+    .export-icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    .btn-new-provider {
+      background-color: #5c3c9e;
+      color: #fff;
+      font-weight: 500;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 14px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #43297d;
+      }
+    }
+  }
+}
+
+
+
+.provider-dashboard-wrapper {
+  padding: 1rem;
+  background-color: #f8f7fd;
+  border-radius: 8px;
+
+  .dashboard-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #5c3c9e;
+  }
+
+  .grid-container {
+    max-height: 70vh;          // keeps grid scrollable
+    overflow: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 0.5rem;
+    background-color: #fff;
+
+    app-data-grid {
+      display: block;           // ensures grid takes full width
+    }
+  }
+}
