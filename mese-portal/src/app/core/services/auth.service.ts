@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from './http.service';
-import { Observable, of, tap } from 'rxjs';
+import { firstValueFrom, Observable, of, tap } from 'rxjs';
 import { ILoginRequest } from '../models/core.models';
 import { AuthStore } from '../store/auth.store';
 import { PermissionsStore } from '../store/permission.store';
@@ -13,20 +13,28 @@ export class AuthService {
 
   constructor(private httpService: HttpService, private router: Router) {}
 
-  login(loginRequest: ILoginRequest): Observable<any> {
-    return this.httpService
-      .post<{ token: string; user: any }>('Authentication/login', loginRequest)
-      .pipe(
-        tap(async (response) => {
-          // ✅ set token & user
-
-          this.authStore.setAuth(response.token, response.user);
-
-          // ✅ immediately load permissions
-          await this.permissionsStore.loadPermissions();
-          this.router.navigateByUrl('/dashboard');
-        })
+  async login(loginRequest: ILoginRequest): Promise<void> {
+    try {
+      // Convert the Observable returned by HttpService to a Promise
+      const response = await firstValueFrom(
+        this.httpService.post<{ token: string; user: any }>(
+          'Authentication/login',
+          loginRequest
+        )
       );
+
+      // ✅ Set token & user in AuthStore
+      await this.authStore.setAuth(response.token, response.user);
+
+      // ✅ Load permissions sequentially
+      await this.permissionsStore.loadPermissions();
+
+      // ✅ Navigate to dashboard after everything is ready
+      this.router.navigateByUrl('/dashboard');
+    } catch (err) {
+      console.error('Login failed', err);
+      throw err;
+    }
   }
 
   logout() {

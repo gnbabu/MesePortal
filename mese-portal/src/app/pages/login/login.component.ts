@@ -28,18 +28,15 @@ export class LoginComponent {
   private router = inject(Router);
   loginRequest: ILoginRequest = { userName: '', password: '' };
 
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      this.authService.login(this.loginRequest).subscribe({
-        next: () => {
-          // AuthStore updated automatically
-          //this.router.navigateByUrl('/dashboard');
-        },
-        error: (err) => {
-          console.error('Login failed', err);
-          alert('Invalid credentials');
-        },
-      });
+  async onSubmit(form: NgForm) {
+    if (!form.valid) return;
+
+    try {
+      await this.authService.login(this.loginRequest);
+      // Navigation already happens inside login after permissions are loaded
+    } catch (err) {
+      console.error('Login failed', err);
+      alert('Invalid credentials');
     }
   }
 }
