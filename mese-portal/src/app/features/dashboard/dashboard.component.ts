@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { GridColumn } from '../../core/models/core.models';
 import { DataGridComponent } from '../../shared/components/data-grid/data-grid.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,7 @@ import { DataGridComponent } from '../../shared/components/data-grid/data-grid.c
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
+  private router = inject(Router);
   columns: GridColumn[] = [
     { field: 'regId', header: 'Reg ID', sortable: true },
     { field: 'provider', header: 'Provider', sortable: true },
@@ -155,4 +157,8 @@ export class DashboardComponent {
       revalidationDueDate: '2028-04-30',
     },
   ];
+
+  goToRegistration() {
+    this.router.navigateByUrl('/provider-registration');
+  }
 }

@@ -1,0 +1,299 @@
+<div class="container-fluid page-wrapper">
+  <!-- HEADER -->
+  <div class="my-4">
+    <div class="header-card">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="label">Provider Name</div>
+          <div class="value">"1st Place" Home and Day Services</div>
+
+          <div class="label mt-2">Provider Type</div>
+          <div class="value">WAIVERED SERVICES ORGANIZATION</div>
+        </div>
+        <div class="col-md-4">
+          <div class="label">Medicaid ID</div>
+          <div class="value">0247827</div>
+
+          <div class="label mt-2">Risk Level</div>
+          <div class="value text-danger fw-bold">High</div>
+        </div>
+        <div class="col-md-4">
+          <div class="label">Assigned To</div>
+          <select class="form-select form-select-sm mt-1">
+            <option selected>-- Select user --</option>
+            <option>AutotechAdmin</option>
+            <option>Reviewer A</option>
+            <option>Reviewer B</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Collapsible -->
+      <div class="collapse" id="moreDetails">
+        <div class="collapse-inner">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="label">Application Status</div>
+              <div class="value">Complete</div>
+              <div class="label mt-2">Enrollment Status</div>
+              <div class="value">ACTIVE</div>
+            </div>
+            <div class="col-md-6">
+              <div class="label">Effective Date</div>
+              <div class="value">10/04/2017</div>
+              <div class="label mt-2">Revalidation Date</div>
+              <div class="value">05/31/2029</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toggle button -->
+      <div class="text-end mt-2">
+        <button
+          #toggleBtn
+          class="btn btn-fancy btn-sm"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#moreDetails"
+          aria-expanded="false"
+          aria-controls="moreDetails"
+        >
+          More <i class="bi bi-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DROPDOWN + ICON NAVBAR -->
+  <div class="icon-navbar-wrapper mb-4">
+    <!-- DROPDOWN -->
+    <div class="top-dropdown-wrap">
+      <div class="dropdown d-inline-block">
+        <button
+          class="btn btn-outline-primary dropdown-toggle fancy-dropdown-btn"
+          type="button"
+          data-bs-toggle="dropdown"
+        >
+          Jump to
+        </button>
+        <ul class="dropdown-menu fancy-dropdown-menu scrollable-dropdown">
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-person-badge me-2"></i>Provider Information
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-telephone me-2"></i>Primary Contact Information
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-geo-alt me-2"></i>Primary Service Address
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-credit-card me-2"></i>Billing & Payment Address
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-envelope me-2"></i>Correspondence Address
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-building me-2"></i>Other Service Locations
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-file-earmark-text me-2"></i>1099 Address
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-house me-2"></i>Home Office Address
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-bar-chart-line-fill me-2"></i>Reports
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ICON NAVBAR -->
+    <div class="icon-navbar">
+      <a href="#" class="active" (click)="setActive($event)"
+        ><i class="bi bi-person-badge"></i>
+        <div>Provider Information</div>
+        <span class="arrow">➔</span></a
+      >
+      <a href="#" (click)="setActive($event)"
+        ><i class="bi bi-telephone"></i>
+        <div>Primary Contact Information</div>
+        <span class="arrow">➔</span></a
+      >
+      <a href="#" (click)="setActive($event)"
+        ><i class="bi bi-geo-alt"></i>
+        <div>Primary Service Address</div>
+        <span class="arrow">➔</span></a
+      >
+      <a href="#" (click)="setActive($event)"
+        ><i class="bi bi-credit-card"></i>
+        <div>Billing & Payment Address</div>
+        <span class="arrow">➔</span></a
+      >
+      <a href="#" (click)="setActive($event)"
+        ><i class="bi bi-envelope"></i>
+        <div>Correspondence Address</div>
+        <span class="arrow">➔</span></a
+      >
+
+      <a href="#" (click)="setActive($event)"
+        ><i class="bi bi-building"></i>
+        <div>Other Service Locations</div>
+        <span class="arrow">➔</span></a
+      >
+      <a href="#" (click)="setActive($event)"
+        ><i class="bi bi-file-earmark-text"></i>
+        <div>1099 Address</div>
+        <span class="arrow">➔</span></a
+      >
+      <a href="#" (click)="setActive($event)"
+        ><i class="bi bi-house"></i>
+        <div>Home Office Address</div>
+        <span class="arrow">➔</span></a
+      >
+
+      <a href="#" (click)="setActive($event)"
+        ><i class="bi bi-bar-chart-line-fill"></i>
+        <div>Reports</div>
+        <span class="arrow">➔</span></a
+      >
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+    <div class="card p-4 rounded-3 shadow-sm">
+      <h3 class="mb-4 text-left header-h3">Provider Details</h3>
+
+      <div class="card p-4">
+        <!-- Top Action Bar -->
+        <div class="action-bar">
+          <button type="button" class="btn btn-secondary">
+            <i class="bi bi-arrow-left-circle me-1"></i>Previous
+          </button>
+          <button type="button" class="btn btn-next">
+            Next <i class="bi bi-arrow-right-circle ms-1"></i>
+          </button>
+          <button type="button" class="btn btn-danger">
+            <i class="bi bi-x-circle me-1"></i>Cancel
+          </button>
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle me-1"></i>Save
+          </button>
+        </div>
+
+        <div class="row g-4 align-items-start">
+          <!-- Left Image (25%) -->
+          <div class="col-12 col-md-3">
+            <div class="placeholder-image">Provider Image</div>
+          </div>
+
+          <!-- Right Controls (75%) -->
+          <div class="col-12 col-md-9">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Provider Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter provider name"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter address"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter city"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">State</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter state"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Zip Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter zip code"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Provider Type</label>
+                <select class="form-select">
+                  <option selected disabled>Select provider type</option>
+                  <option value="1">Hospital</option>
+                  <option value="2">Clinic</option>
+                  <option value="3">Pharmacy</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Region</label>
+                <select class="form-select">
+                  <option selected disabled>Select region</option>
+                  <option value="1">North</option>
+                  <option value="2">South</option>
+                  <option value="3">East</option>
+                  <option value="4">West</option>
+                </select>
+              </div>
+
+              <div class="action-bar mt-4">
+                <button type="button" class="btn btn-secondary">
+                  <i class="bi bi-arrow-left-circle me-1"></i>Previous
+                </button>
+                <button type="button" class="btn btn-next">
+                  Next <i class="bi bi-arrow-right-circle ms-1"></i>
+                </button>
+                <button type="button" class="btn btn-danger">
+                  <i class="bi bi-x-circle me-1"></i>Cancel
+                </button>
+                <button type="submit" class="btn btn-success">
+                  <i class="bi bi-check-circle me-1"></i>Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
