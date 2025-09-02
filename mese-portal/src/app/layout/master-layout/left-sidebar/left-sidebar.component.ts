@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { MenuStore } from '../../core/store/menu.store';
+import { MenuStore } from '../../../core/store/menu.store';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 

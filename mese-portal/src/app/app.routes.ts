@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { MasterLayoutComponent } from './layout/master-layout.component';
+import { MasterLayoutComponent } from './layout/master-layout/master-layout.component';
 import { authGuard } from './core/guards/auth.guard';
 import { permissionsGuard } from './core/guards/permissions.guard';
 

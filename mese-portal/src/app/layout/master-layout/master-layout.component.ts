@@ -3,7 +3,7 @@ import { HeaderComponent } from './header/header.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterOutlet } from '@angular/router';
-import { ProgressBarComponent } from '../shared/components/progress-bar/progress-bar.component';
+import { ProgressBarComponent } from '../../shared/components/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-master-layout',

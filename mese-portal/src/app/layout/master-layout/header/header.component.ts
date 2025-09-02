@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
-import { AuthStore } from '../../core/store/auth.store';
-import { PermissionsStore } from '../../core/store/permission.store';
+import { AuthStore } from '../../../core/store/auth.store';
+import { PermissionsStore } from '../../../core/store/permission.store';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 @Component({
