@@ -4,10 +4,10 @@
   <div class="card p-4">
     <!-- Top Action Bar -->
     <div class="action-bar">
-      <button type="button" class="btn btn-secondary">
+      <button type="button" class="btn btn-secondary" (click)="goToPrevious()">
         <i class="bi bi-arrow-left-circle me-1"></i>Previous
       </button>
-      <button type="button" class="btn btn-next">
+      <button type="button" class="btn btn-next" (click)="goToNext()">
         Next <i class="bi bi-arrow-right-circle ms-1"></i>
       </button>
       <button type="button" class="btn btn-danger">
@@ -34,10 +34,10 @@
 
     <!-- Action Bar -->
     <div class="action-bar mt-4 d-flex justify-content-end gap-2">
-      <button type="button" class="btn btn-secondary">
+      <button type="button" class="btn btn-secondary" (click)="goToPrevious()">
         <i class="bi bi-arrow-left-circle me-1"></i>Previous
       </button>
-      <button type="button" class="btn btn-next">
+      <button type="button" class="btn btn-next" (click)="goToNext()">
         Next <i class="bi bi-arrow-right-circle ms-1"></i>
       </button>
       <button type="button" class="btn btn-danger">

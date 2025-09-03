@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DataGridComponent } from '../../../shared/components/data-grid/data-grid.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-provider-information',
@@ -8,6 +9,7 @@ import { DataGridComponent } from '../../../shared/components/data-grid/data-gri
   styleUrl: './provider-information.component.scss',
 })
 export class ProviderInformationComponent {
+  private router = inject(Router);
   attachmentColumns = [
     { field: 'fileName', header: 'File Name', sortable: true },
     { field: 'fileType', header: 'Type', sortable: true },
@@ -59,4 +61,10 @@ export class ProviderInformationComponent {
       uploadedOn: '2025-08-05',
     },
   ];
+
+  goToNext() {
+    this.router.navigateByUrl(
+      '/provider-registration/primary-contact-information'
+    );
+  }
 }
