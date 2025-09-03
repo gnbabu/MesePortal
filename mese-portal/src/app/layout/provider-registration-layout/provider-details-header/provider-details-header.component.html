@@ -1,1 +1,68 @@
-<p>provider-details-header works!</p>
+<!-- HEADER -->
+<div class="my-4">
+  <div class="header-card">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="label">Provider Name</div>
+        <div class="value">"1st Place" Home and Day Services</div>
+
+        <div class="label mt-2">Provider Type</div>
+        <div class="value">WAIVERED SERVICES ORGANIZATION</div>
+      </div>
+      <div class="col-md-4">
+        <div class="label">Medicaid ID</div>
+        <div class="value">0247827</div>
+
+        <div class="label mt-2">Risk Level</div>
+        <div class="value text-danger fw-bold">High</div>
+      </div>
+      <div class="col-md-4">
+        <div class="label">Assigned To</div>
+        <select class="form-select form-select-sm mt-1">
+          <option selected>-- Select user --</option>
+          <option>AutotechAdmin</option>
+          <option>Reviewer A</option>
+          <option>Reviewer B</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Collapsible -->
+    <div class="collapse" id="moreDetails">
+      <div class="collapse-inner">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="label">Application Status</div>
+            <div class="value">Complete</div>
+            <div class="label mt-2">Enrollment Status</div>
+            <div class="value">ACTIVE</div>
+          </div>
+          <div class="col-md-6">
+            <div class="label">Effective Date</div>
+            <div class="value">10/04/2017</div>
+            <div class="label mt-2">Revalidation Date</div>
+            <div class="value">05/31/2029</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toggle button -->
+    <div class="text-end mt-2">
+      <button
+        class="btn btn-fancy btn-sm"
+        type="button"
+        (click)="toggleDetails()"
+        [attr.aria-expanded]="isExpanded"
+        data-bs-toggle="collapse"
+        data-bs-target="#moreDetails"
+      >
+        {{ isExpanded ? "Less" : "More" }}
+        <i
+          class="bi"
+          [ngClass]="isExpanded ? 'bi-chevron-up' : 'bi-chevron-down'"
+        ></i>
+      </button>
+    </div>
+  </div>
+</div>

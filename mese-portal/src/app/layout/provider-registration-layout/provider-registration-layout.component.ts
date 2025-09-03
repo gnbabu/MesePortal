@@ -1,20 +1,17 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { ProviderDetailsHeaderComponent } from './provider-details-header/provider-details-header.component';
+import { ProviderRegistrationNavigationComponent } from './provider-registration-navigation/provider-registration-navigation.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-provider-registration-layout',
-  imports: [],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    ProviderDetailsHeaderComponent,
+    ProviderRegistrationNavigationComponent,
+  ],
   templateUrl: './provider-registration-layout.component.html',
   styleUrl: './provider-registration-layout.component.scss',
 })
-export class ProviderRegistrationLayoutComponent {
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
-
-  setActive(event: Event) {
-    event.preventDefault();
-    const links = this.el.nativeElement.querySelectorAll('.icon-navbar a');
-    links.forEach((link: HTMLElement) =>
-      this.renderer.removeClass(link, 'active')
-    );
-    this.renderer.addClass(event.currentTarget as HTMLElement, 'active');
-  }
-}
+export class ProviderRegistrationLayoutComponent {}

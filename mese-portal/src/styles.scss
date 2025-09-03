@@ -234,3 +234,63 @@ footer {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+/* -------------------- Global Reusable Styles for Registration -------------------- */
+
+/* Circle placeholder image (used in forms, cards, profile sections) */
+.placeholder-image {
+  width: min(100%, 180px);
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #5561d8, #8e97f3);
+  box-shadow: 0 4px 12px #8e97f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto;
+
+  i {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #fff !important;
+  }
+}
+
+/* Form labels (consistent across app) */
+.form-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+/* Section headers */
+.header-h3 {
+  font-weight: 600;
+  color: #3f3d73;
+}
+
+/* Generic action bar (aligns buttons to right, wraps on small screens) */
+.action-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Custom Next button (used in forms/wizard) */
+.btn-next {
+  background-color: #5c3c9e;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #43297d;
+    color: #fff;
+  }
+}
+
