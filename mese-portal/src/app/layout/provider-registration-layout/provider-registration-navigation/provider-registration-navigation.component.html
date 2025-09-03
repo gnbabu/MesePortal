@@ -8,51 +8,98 @@
         type="button"
         data-bs-toggle="dropdown"
       >
-        Jump to
+        {{ selectedItem }}
       </button>
       <ul class="dropdown-menu fancy-dropdown-menu scrollable-dropdown">
         <li>
-          <a class="dropdown-item" href="#">
+          <a
+            class="dropdown-item"
+            [routerLink]="['/provider-registration/provider-information']"
+            routerLinkActive="active"
+            (click)="setSelected('Provider Information')"
+          >
             <i class="bi bi-person-badge me-2"></i>Provider Information
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a
+            class="dropdown-item"
+            [routerLink]="[
+              '/provider-registration/primary-contact-information'
+            ]"
+            routerLinkActive="active"
+            (click)="setSelected('Primary Contact Information')"
+          >
             <i class="bi bi-telephone me-2"></i>Primary Contact Information
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a
+            class="dropdown-item"
+            [routerLink]="['/provider-registration/primary-service-address']"
+            routerLinkActive="active"
+            (click)="setSelected('Primary Service Address')"
+          >
             <i class="bi bi-geo-alt me-2"></i>Primary Service Address
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a
+            class="dropdown-item"
+            [routerLink]="['/provider-registration/billing-payment-address']"
+            routerLinkActive="active"
+            (click)="setSelected('Billing & Payment Address')"
+          >
             <i class="bi bi-credit-card me-2"></i>Billing & Payment Address
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a
+            class="dropdown-item"
+            [routerLink]="['/provider-registration/correspondence-address']"
+            routerLinkActive="active"
+            (click)="setSelected('Correspondence Address')"
+          >
             <i class="bi bi-envelope me-2"></i>Correspondence Address
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a
+            class="dropdown-item"
+            [routerLink]="['/provider-registration/other-service-locations']"
+            routerLinkActive="active"
+            (click)="setSelected('Other Service Locations')"
+          >
             <i class="bi bi-building me-2"></i>Other Service Locations
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a
+            class="dropdown-item"
+            [routerLink]="['/provider-registration/reg-1099-address']"
+            routerLinkActive="active"
+            (click)="setSelected('1099 Address')"
+          >
             <i class="bi bi-file-earmark-text me-2"></i>1099 Address
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a
+            class="dropdown-item"
+            [routerLink]="['/provider-registration/home-office-address']"
+            routerLinkActive="active"
+            (click)="setSelected('Home Office Address')"
+          >
             <i class="bi bi-house me-2"></i>Home Office Address
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a
+            class="dropdown-item"
+            [routerLink]="['/provider-registration/reports']"
+            routerLinkActive="active"
+            (click)="setSelected('Reports')"
+          >
             <i class="bi bi-bar-chart-line-fill me-2"></i>Reports
           </a>
         </li>
@@ -66,73 +113,80 @@
       [routerLink]="['/provider-registration/provider-information']"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><i class="bi bi-person-badge"></i>
-      <div>Provider Information</div>
-      <span class="arrow">➔</span></a
     >
+      <i class="bi bi-person-badge"></i>
+      <div>Provider Information</div>
+      <span class="arrow">➔</span>
+    </a>
     <a
       [routerLink]="['/provider-registration/primary-contact-information']"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><i class="bi bi-telephone"></i>
-      <div>Primary Contact Information</div>
-      <span class="arrow">➔</span></a
     >
+      <i class="bi bi-telephone"></i>
+      <div>Primary Contact Information</div>
+      <span class="arrow">➔</span>
+    </a>
     <a
       [routerLink]="['/provider-registration/primary-service-address']"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><i class="bi bi-geo-alt"></i>
-      <div>Primary Service Address</div>
-      <span class="arrow">➔</span></a
     >
+      <i class="bi bi-geo-alt"></i>
+      <div>Primary Service Address</div>
+      <span class="arrow">➔</span>
+    </a>
     <a
       [routerLink]="['/provider-registration/billing-payment-address']"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><i class="bi bi-credit-card"></i>
-      <div>Billing & Payment Address</div>
-      <span class="arrow">➔</span></a
     >
+      <i class="bi bi-credit-card"></i>
+      <div>Billing & Payment Address</div>
+      <span class="arrow">➔</span>
+    </a>
     <a
       [routerLink]="['/provider-registration/correspondence-address']"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><i class="bi bi-envelope"></i>
-      <div>Correspondence Address</div>
-      <span class="arrow">➔</span></a
     >
-
+      <i class="bi bi-envelope"></i>
+      <div>Correspondence Address</div>
+      <span class="arrow">➔</span>
+    </a>
     <a
       [routerLink]="['/provider-registration/other-service-locations']"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><i class="bi bi-building"></i>
-      <div>Other Service Locations</div>
-      <span class="arrow">➔</span></a
     >
+      <i class="bi bi-building"></i>
+      <div>Other Service Locations</div>
+      <span class="arrow">➔</span>
+    </a>
     <a
       [routerLink]="['/provider-registration/reg-1099-address']"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><i class="bi bi-file-earmark-text"></i>
-      <div>1099 Address</div>
-      <span class="arrow">➔</span></a
     >
+      <i class="bi bi-file-earmark-text"></i>
+      <div>1099 Address</div>
+      <span class="arrow">➔</span>
+    </a>
     <a
       [routerLink]="['/provider-registration/home-office-address']"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><i class="bi bi-house"></i>
-      <div>Home Office Address</div>
-      <span class="arrow">➔</span></a
     >
-
+      <i class="bi bi-house"></i>
+      <div>Home Office Address</div>
+      <span class="arrow">➔</span>
+    </a>
     <a
       [routerLink]="['/provider-registration/reports']"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><i class="bi bi-bar-chart-line-fill"></i>
+    >
+      <i class="bi bi-bar-chart-line-fill"></i>
       <div>Reports</div>
     </a>
   </div>
