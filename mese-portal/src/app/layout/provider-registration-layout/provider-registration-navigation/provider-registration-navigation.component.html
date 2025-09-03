@@ -62,52 +62,78 @@
 
   <!-- ICON NAVBAR -->
   <div class="icon-navbar">
-    <a href="#" class="active" (click)="setActive($event)"
+    <a
+      [routerLink]="['/provider-registration/provider-information']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       ><i class="bi bi-person-badge"></i>
       <div>Provider Information</div>
       <span class="arrow">➔</span></a
     >
-    <a href="#" (click)="setActive($event)"
+    <a
+      [routerLink]="['/provider-registration/primary-contact-information']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       ><i class="bi bi-telephone"></i>
       <div>Primary Contact Information</div>
       <span class="arrow">➔</span></a
     >
-    <a href="#" (click)="setActive($event)"
+    <a
+      [routerLink]="['/provider-registration/primary-service-address']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       ><i class="bi bi-geo-alt"></i>
       <div>Primary Service Address</div>
       <span class="arrow">➔</span></a
     >
-    <a href="#" (click)="setActive($event)"
+    <a
+      [routerLink]="['/provider-registration/billing-payment-address']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       ><i class="bi bi-credit-card"></i>
       <div>Billing & Payment Address</div>
       <span class="arrow">➔</span></a
     >
-    <a href="#" (click)="setActive($event)"
+    <a
+      [routerLink]="['/provider-registration/correspondence-address']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       ><i class="bi bi-envelope"></i>
       <div>Correspondence Address</div>
       <span class="arrow">➔</span></a
     >
 
-    <a href="#" (click)="setActive($event)"
+    <a
+      [routerLink]="['/provider-registration/other-service-locations']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       ><i class="bi bi-building"></i>
       <div>Other Service Locations</div>
       <span class="arrow">➔</span></a
     >
-    <a href="#" (click)="setActive($event)"
+    <a
+      [routerLink]="['/provider-registration/reg-1099-address']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       ><i class="bi bi-file-earmark-text"></i>
       <div>1099 Address</div>
       <span class="arrow">➔</span></a
     >
-    <a href="#" (click)="setActive($event)"
+    <a
+      [routerLink]="['/provider-registration/home-office-address']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       ><i class="bi bi-house"></i>
       <div>Home Office Address</div>
       <span class="arrow">➔</span></a
     >
 
-    <a href="#" (click)="setActive($event)"
+    <a
+      [routerLink]="['/provider-registration/reports']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       ><i class="bi bi-bar-chart-line-fill"></i>
       <div>Reports</div>
-      <span class="arrow">➔</span></a
-    >
+    </a>
   </div>
 </div>

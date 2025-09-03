@@ -1,8 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-provider-registration-navigation',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterModule],
   templateUrl: './provider-registration-navigation.component.html',
   styleUrl: './provider-registration-navigation.component.scss',
 })
