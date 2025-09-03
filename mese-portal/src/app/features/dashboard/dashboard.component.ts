@@ -2,10 +2,12 @@ import { Component, inject } from '@angular/core';
 import { GridColumn } from '../../core/models/core.models';
 import { DataGridComponent } from '../../shared/components/data-grid/data-grid.component';
 import { Router } from '@angular/router';
+import { HasPermissionDirective } from '../../shared/directives/app-permission/has-permission.directive';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [DataGridComponent],
+  standalone: true,
+  imports: [DataGridComponent, HasPermissionDirective],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })

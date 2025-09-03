@@ -21,7 +21,11 @@
         <i class="bi bi-file-earmark-pdf"></i> PDF
       </button>
       <!-- New Provider button -->
-      <button class="btn btn-new-provider" (click)="goToRegistration()">
+      <button
+        *appHasPermission="'NEWPROVIDER.VIW'"
+        class="btn btn-new-provider"
+        (click)="goToRegistration()"
+      >
         New Provider ?
       </button>
     </div>
