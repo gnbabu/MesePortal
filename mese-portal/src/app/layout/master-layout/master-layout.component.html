@@ -3,15 +3,15 @@
   <!-- Host must be the #sidebar element -->
   <app-left-sidebar
     id="sidebar"
-    [class.active]="sidebarActive"
-    [sidebarActive]="sidebarActive"
+    [class.active]="sidebarActive()"
+    [sidebarActive]="sidebarActive()"
     (close)="closeSidebar()"
   ></app-left-sidebar>
 
   <!-- Content must be a sibling that comes AFTER #sidebar -->
   <div id="content">
     <app-header
-      [sidebarActive]="sidebarActive"
+      [sidebarActive]="sidebarActive()"
       (toggleSidebar)="toggleSidebar()"
     ></app-header>
     <!-- Global loader -->

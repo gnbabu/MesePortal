@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,13 +19,8 @@ import { ProgressBarComponent } from '../../shared/components/progress-bar/progr
   styleUrl: './master-layout.component.scss',
 })
 export class MasterLayoutComponent {
-  sidebarActive = false;
+  sidebarActive = signal(false);
 
-  toggleSidebar() {
-    this.sidebarActive = !this.sidebarActive;
-  }
-
-  closeSidebar() {
-    this.sidebarActive = false;
-  }
+  toggleSidebar = () => this.sidebarActive.update((v) => !v);
+  closeSidebar = () => this.sidebarActive.set(false);
 }
