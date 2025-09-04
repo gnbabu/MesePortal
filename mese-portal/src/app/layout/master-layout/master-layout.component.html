@@ -10,7 +10,10 @@
 
   <!-- Content must be a sibling that comes AFTER #sidebar -->
   <div id="content">
-    <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+    <app-header
+      [sidebarActive]="sidebarActive"
+      (toggleSidebar)="toggleSidebar()"
+    ></app-header>
     <!-- Global loader -->
 
     <div class="page-content">

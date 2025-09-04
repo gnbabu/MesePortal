@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { AuthStore } from '../../../core/store/auth.store';
 import { PermissionsStore } from '../../../core/store/permission.store';
 import { Router, RouterLink } from '@angular/router';
@@ -14,7 +14,7 @@ export class HeaderComponent {
   authStore = inject(AuthStore);
   permissionsStore = inject(PermissionsStore);
   private router = inject(Router);
-
+  @Input() sidebarActive = false;
   @Output() toggleSidebar = new EventEmitter<void>();
 
   logOut() {

@@ -1,7 +1,11 @@
 <nav class="navbar navbar-expand-lg topbar">
   <div class="container-fluid">
     <!-- Sidebar toggle -->
-    <button class="btn btn-outline-light me-3" (click)="toggleSidebar.emit()">
+    <button
+      class="btn btn-outline-light me-3"
+      *ngIf="!sidebarActive"
+      (click)="toggleSidebar.emit()"
+    >
       ☰
     </button>
 
