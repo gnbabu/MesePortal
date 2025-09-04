@@ -16,7 +16,6 @@
             class="dropdown-item"
             [routerLink]="['/provider-registration/provider-information']"
             routerLinkActive="active"
-            (click)="setSelected('Provider Information')"
           >
             <i class="bi bi-person-badge me-2"></i>Provider Information
           </a>
@@ -28,7 +27,6 @@
               '/provider-registration/primary-contact-information'
             ]"
             routerLinkActive="active"
-            (click)="setSelected('Primary Contact Information')"
           >
             <i class="bi bi-telephone me-2"></i>Primary Contact Information
           </a>
@@ -38,7 +36,6 @@
             class="dropdown-item"
             [routerLink]="['/provider-registration/primary-service-address']"
             routerLinkActive="active"
-            (click)="setSelected('Primary Service Address')"
           >
             <i class="bi bi-geo-alt me-2"></i>Primary Service Address
           </a>
@@ -48,7 +45,6 @@
             class="dropdown-item"
             [routerLink]="['/provider-registration/billing-payment-address']"
             routerLinkActive="active"
-            (click)="setSelected('Billing & Payment Address')"
           >
             <i class="bi bi-credit-card me-2"></i>Billing & Payment Address
           </a>
@@ -58,7 +54,6 @@
             class="dropdown-item"
             [routerLink]="['/provider-registration/correspondence-address']"
             routerLinkActive="active"
-            (click)="setSelected('Correspondence Address')"
           >
             <i class="bi bi-envelope me-2"></i>Correspondence Address
           </a>
@@ -68,7 +63,6 @@
             class="dropdown-item"
             [routerLink]="['/provider-registration/other-service-locations']"
             routerLinkActive="active"
-            (click)="setSelected('Other Service Locations')"
           >
             <i class="bi bi-building me-2"></i>Other Service Locations
           </a>
@@ -78,7 +72,6 @@
             class="dropdown-item"
             [routerLink]="['/provider-registration/reg-1099-address']"
             routerLinkActive="active"
-            (click)="setSelected('1099 Address')"
           >
             <i class="bi bi-file-earmark-text me-2"></i>1099 Address
           </a>
@@ -88,7 +81,6 @@
             class="dropdown-item"
             [routerLink]="['/provider-registration/home-office-address']"
             routerLinkActive="active"
-            (click)="setSelected('Home Office Address')"
           >
             <i class="bi bi-house me-2"></i>Home Office Address
           </a>
@@ -98,7 +90,6 @@
             class="dropdown-item"
             [routerLink]="['/provider-registration/reports']"
             routerLinkActive="active"
-            (click)="setSelected('Reports')"
           >
             <i class="bi bi-bar-chart-line-fill me-2"></i>Reports
           </a>
@@ -108,7 +99,7 @@
   </div>
 
   <!-- ICON NAVBAR -->
-  <div class="icon-navbar">
+  <div class="icon-navbar" #iconNavbar>
     <a
       [routerLink]="['/provider-registration/provider-information']"
       routerLinkActive="active"

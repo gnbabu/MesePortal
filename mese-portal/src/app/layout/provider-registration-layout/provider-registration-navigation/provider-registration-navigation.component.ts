@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import {
   NavigationEnd,
   Router,
@@ -17,52 +17,56 @@ import { filter } from 'rxjs';
 })
 export class ProviderRegistrationNavigationComponent {
   selectedItem = 'Jump to';
-  constructor(private router: Router) {}
+  @ViewChild('iconNavbar') iconNavbar!: ElementRef;
+
+  constructor(private router: Router, private ngZone: NgZone) {}
 
   ngOnInit() {
-    // Update dropdown label when navigation happens
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         this.syncSelectedItem(event.urlAfterRedirects);
+
+        // Wait until Angular has updated DOM
+        this.ngZone.onStable.subscribe(() => {
+          this.scrollToActive();
+        });
       });
   }
 
-  setSelected(item: string) {
-    this.selectedItem = item;
+  private syncSelectedItem(url: string) {
+    if (url.includes('provider-information'))
+      this.selectedItem = 'Provider Information';
+    else if (url.includes('primary-contact-information'))
+      this.selectedItem = 'Primary Contact Information';
+    else if (url.includes('primary-service-address'))
+      this.selectedItem = 'Primary Service Address';
+    else if (url.includes('billing-payment-address'))
+      this.selectedItem = 'Billing & Payment Address';
+    else if (url.includes('correspondence-address'))
+      this.selectedItem = 'Correspondence Address';
+    else if (url.includes('other-service-locations'))
+      this.selectedItem = 'Other Service Locations';
+    else if (url.includes('reg-1099-address'))
+      this.selectedItem = '1099 Address';
+    else if (url.includes('home-office-address'))
+      this.selectedItem = 'Home Office Address';
+    else if (url.includes('reports')) this.selectedItem = 'Reports';
+    else this.selectedItem = 'Jump to';
   }
 
-  private syncSelectedItem(url: string) {
-    switch (true) {
-      case url.includes('provider-information'):
-        this.selectedItem = 'Provider Information';
-        break;
-      case url.includes('primary-contact-information'):
-        this.selectedItem = 'Primary Contact Information';
-        break;
-      case url.includes('primary-service-address'):
-        this.selectedItem = 'Primary Service Address';
-        break;
-      case url.includes('billing-payment-address'):
-        this.selectedItem = 'Billing & Payment Address';
-        break;
-      case url.includes('correspondence-address'):
-        this.selectedItem = 'Correspondence Address';
-        break;
-      case url.includes('other-service-locations'):
-        this.selectedItem = 'Other Service Locations';
-        break;
-      case url.includes('reg-1099-address'):
-        this.selectedItem = '1099 Address';
-        break;
-      case url.includes('home-office-address'):
-        this.selectedItem = 'Home Office Address';
-        break;
-      case url.includes('reports'):
-        this.selectedItem = 'Reports';
-        break;
-      default:
-        this.selectedItem = 'Jump to';
+  private scrollToActive() {
+    if (!this.iconNavbar) return;
+
+    const activeLink: HTMLElement | null =
+      this.iconNavbar.nativeElement.querySelector('a.active');
+
+    if (activeLink) {
+      activeLink.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      });
     }
   }
 }
