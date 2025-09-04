@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { DataGridComponent } from '../../../shared/components/data-grid/data-grid.component';
 import { Router } from '@angular/router';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'app-provider-information',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProviderInformationComponent {
   private router = inject(Router);
+  private toastService = inject(ToastService);
   attachmentColumns = [
     { field: 'fileName', header: 'File Name', sortable: true },
     { field: 'fileType', header: 'Type', sortable: true },
@@ -63,6 +65,7 @@ export class ProviderInformationComponent {
   ];
 
   goToNext() {
+    this.toastService.success('Provider Information saved successfully!');
     this.router.navigateByUrl(
       '/provider-registration/primary-contact-information'
     );

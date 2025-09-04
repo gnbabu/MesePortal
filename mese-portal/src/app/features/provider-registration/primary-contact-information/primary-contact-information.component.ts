@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'app-primary-contact-information',
@@ -9,7 +10,11 @@ import { Router } from '@angular/router';
 })
 export class PrimaryContactInformationComponent {
   private router = inject(Router);
+  private toastService = inject(ToastService);
   goToNext() {
+    this.toastService.success(
+      'Primary Contact Information saved successfully!'
+    );
     this.router.navigateByUrl('/provider-registration/primary-service-address');
   }
   goToPrevious() {
