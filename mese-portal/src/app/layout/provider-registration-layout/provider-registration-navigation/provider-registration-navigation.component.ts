@@ -26,11 +26,13 @@ export class ProviderRegistrationNavigationComponent {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         this.syncSelectedItem(event.urlAfterRedirects);
+        // Scroll main page to top
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 
-        // Wait until Angular has updated DOM
-        this.ngZone.onStable.subscribe(() => {
+        // Run scrollToActive once after navigation completes
+        setTimeout(() => {
           this.scrollToActive();
-        });
+        }, 0);
       });
   }
 
