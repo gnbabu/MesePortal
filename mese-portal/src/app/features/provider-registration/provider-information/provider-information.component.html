@@ -70,23 +70,28 @@
 
           <div class="mb-4 col-md-6">
             <label class="form-label">Provider Type</label>
-            <select class="form-select">
-              <option selected disabled>Select provider type</option>
-              <option value="1">Hospital</option>
-              <option value="2">Clinic</option>
-              <option value="3">Pharmacy</option>
-            </select>
+            <app-dropdown
+              [options]="providerTypes"
+              placeholder="Select provider type"
+              valueAccessor="id"
+              textAccessor="name"
+              [(ngModel)]="selectedProviderType"
+              name="providerType"
+              (selectionChange)="onProviderTypeChange($event)"
+            ></app-dropdown>
           </div>
 
           <div class="mb-4 col-md-6">
             <label class="form-label">Region</label>
-            <select class="form-select">
-              <option selected disabled>Select region</option>
-              <option value="1">North</option>
-              <option value="2">South</option>
-              <option value="3">East</option>
-              <option value="4">West</option>
-            </select>
+            <app-dropdown
+              [options]="regions"
+              placeholder="Select region"
+              valueAccessor="id"
+              name="regions"
+              textAccessor="name"
+              [(ngModel)]="selectedRegion"
+              (selectionChange)="onRegionChange($event)"
+            ></app-dropdown>
           </div>
         </form>
       </div>

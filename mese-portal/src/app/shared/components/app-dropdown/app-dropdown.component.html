@@ -1,0 +1,15 @@
+<select
+  class="form-select"
+  [disabled]="isDisabled"
+  [ngModel]="selectedValue"
+  (ngModelChange)="onSelectChange($event)"
+  (blur)="onTouched()"
+>
+  <!-- Placeholder as first selectable option -->
+  <option [value]="null">{{ placeholder }}</option>
+
+  <!-- Actual options -->
+  <option *ngFor="let opt of options" [value]="getOptionValue(opt)">
+    {{ getOptionText(opt) }}
+  </option>
+</select>

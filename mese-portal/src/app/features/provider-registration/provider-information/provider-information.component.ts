@@ -3,11 +3,13 @@ import { DataGridComponent } from '../../../shared/components/data-grid/data-gri
 import { Router } from '@angular/router';
 import { ToastService } from '../../../core/services/toast.service';
 import { GridColumn } from '../../../core/models/core.models';
+import { AppDropdownComponent } from '../../../shared/components/app-dropdown/app-dropdown.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-provider-information',
   standalone: true,
-  imports: [DataGridComponent],
+  imports: [FormsModule, DataGridComponent, AppDropdownComponent],
   templateUrl: './provider-information.component.html',
   styleUrl: './provider-information.component.scss',
 })
@@ -17,8 +19,24 @@ export class ProviderInformationComponent implements OnInit {
 
   attachmentColumns: GridColumn[] = [];
   attachments: any[] = [];
+  providerTypes: any[] = [];
+  regions: any[] = [];
+  selectedProviderType: any = null;
+  selectedRegion: any = null;
 
   ngOnInit(): void {
+    this.providerTypes = [
+      { id: 1, name: 'Hospital' },
+      { id: 2, name: 'Clinic' },
+      { id: 3, name: 'Pharmacy' },
+    ];
+
+    this.regions = [
+      { id: 1, name: 'North' },
+      { id: 2, name: 'South' },
+      { id: 3, name: 'East' },
+      { id: 4, name: 'West' },
+    ];
     this.attachmentColumns = [
       { field: 'fileName', header: 'File Name', sortable: true, type: 'text' },
       { field: 'fileType', header: 'Type', sortable: true, type: 'text' },
@@ -80,6 +98,14 @@ export class ProviderInformationComponent implements OnInit {
         uploadedOn: '2025-08-05',
       },
     ];
+  }
+
+  onProviderTypeChange(event: any) {
+    console.log('Selected Provider Type:', event);
+  }
+
+  onRegionChange(event: any) {
+    console.log('Selected Region:', event);
   }
 
   goToNext() {
