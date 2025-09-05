@@ -19,7 +19,6 @@ export const AuthStore = signalStore(
   withMethods((store) => ({
     setAuth(token: string, user: IUser) {
       patchState(store, { token, user });
-      debugger;
       localStorage.setItem('mese_token', token);
       localStorage.setItem('mese_user', JSON.stringify(user));
     },

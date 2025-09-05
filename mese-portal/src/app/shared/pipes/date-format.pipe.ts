@@ -13,7 +13,6 @@ export class DateFormatPipe implements PipeTransform {
     format: string = 'LL',
     timezone?: string
   ): string | null {
-    debugger;
     if (value == null) return null;
 
     let m: Moment;
