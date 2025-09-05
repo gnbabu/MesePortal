@@ -185,6 +185,7 @@ export class DashboardComponent implements OnInit {
   ];
 
   goToRegistration() {
-    this.router.navigateByUrl('/provider-registration');
+    this.router.navigateByUrl('/provider-selection');
+    //this.router.navigateByUrl('/provider-registration');
   }
 }

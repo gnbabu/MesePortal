@@ -1,0 +1,196 @@
+<div class="container py-4">
+  <p
+    class="text-center mb-4"
+    style="color: #3b0065; font-weight: 500; font-size: 1.1rem"
+  >
+    Please note that you have
+    <span class="text-danger fw-bold"
+      >10 days to complete your application.</span
+    >
+    After 10 days, your information will be removed and you will have to
+    re-start the process from the beginning of the application.
+  </p>
+
+  <div class="row g-3">
+    <!-- Card 1 -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card card-standard h-100 d-flex flex-column">
+        <div class="card-header card-header-standard">Standard application</div>
+        <div class="card-body flex-grow-1">
+          <p class="card-text small">
+            Use this application if you are applying to become a new individual,
+            group, facility, or institutional provider to provide
+            fee-for-service for the State Medicaid program.
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 mt-auto">
+          <button
+            class="btn btn-standard w-100"
+            (click)="goToProviderTypePage('Standard application')"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card card-ordering h-100 d-flex flex-column">
+        <div class="card-header card-header-ordering">
+          Ordering, Referring, Prescribing
+        </div>
+        <div class="card-body flex-grow-1">
+          <p class="card-text small">
+            Use this application if you are applying solely for the purpose of
+            Ordering, Referring or Prescribing.
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 mt-auto">
+          <button
+            class="btn btn-ordering w-100"
+            (click)="goToProviderTypePage('Ordering, Referring, Prescribing')"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card card-change h-100 d-flex flex-column">
+        <div class="card-header card-header-change">Change of Operator</div>
+        <div class="card-body flex-grow-1">
+          <p class="card-text small">
+            Use this option if you want to initiate a Change of Operator for
+            Skilled Nursing Facility or Intermediate Care Facility for
+            individuals with intellectual disabilities.
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 mt-auto">
+          <button
+            class="btn btn-change w-100"
+            (click)="goToProviderTypePage('Change of Operator')"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card card-mcp h-100 d-flex flex-column">
+        <div class="card-header card-header-mcp">MCP Single Case</div>
+        <div class="card-body flex-grow-1">
+          <p class="card-text small">
+            Use this application if you are entering into a Single Case
+            agreement with a Managed Care Plan.
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 mt-auto">
+          <button
+            class="btn btn-mcp w-100 d-flex justify-content-center align-items-center"
+            (click)="goToProviderTypePage('MCP Single Case')"
+          >
+            Select <span class="info-icon ms-2" title="More info">i</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Remaining 4 cards, initially hidden -->
+    <div class="col-12 col-md-6 col-lg-3" [hidden]="!showAll">
+      <div class="card card-standard h-100 d-flex flex-column">
+        <div class="card-header card-header-standard">
+          Medicaid Waiver (ODM)
+        </div>
+        <div class="card-body flex-grow-1">
+          <p class="card-text small">
+            Use this application if you are applying to become a Waiver Provider
+            with Ohio Department of Medicaid.
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 mt-auto">
+          <button
+            class="btn btn-standard w-100"
+            (click)="goToProviderTypePage(`Medicaid Waiver (ODM)`)"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3" [hidden]="!showAll">
+      <div class="card card-ordering h-100 d-flex flex-column">
+        <div class="card-header card-header-ordering">
+          Medicaid Waiver (ODA)
+        </div>
+        <div class="card-body flex-grow-1">
+          <p class="card-text small">
+            Use this application if you are applying to become a Waiver Provider
+            with Ohio Department of Aging or if you are initiating a Change of
+            Ownership or Change of Operator as an ODA Provider.
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 mt-auto">
+          <button
+            class="btn btn-ordering w-100"
+            (click)="goToProviderTypePage(`Medicaid Waiver (ODA)`)"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3" [hidden]="!showAll">
+      <div class="card card-change h-100 d-flex flex-column">
+        <div class="card-header card-header-change">Medicaid Waiver (DODD)</div>
+        <div class="card-body flex-grow-1">
+          <p class="card-text small">
+            Use this application if you are applying to become a Waiver Provider
+            with Ohio Department of Developmental Disabilities.
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 mt-auto">
+          <button
+            class="btn btn-change w-100"
+            (click)="goToProviderTypePage(`Medicaid Waiver (DODD)`)"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3" [hidden]="!showAll">
+      <div class="card card-mcp h-100 d-flex flex-column">
+        <div class="card-header card-header-mcp">Non-Medicaid DODD</div>
+        <div class="card-body flex-grow-1">
+          <p class="card-text small">
+            Use this application if you are applying for one or more of the
+            following options; Supported Living Service, Unpaid Support Broker,
+            ICF Operators, or Licensees.
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 mt-auto">
+          <button
+            class="btn btn-mcp w-100"
+            (click)="goToProviderTypePage(`Non-Medicaid DODD`)"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-left mt-3">
+    <button class="btn btn-outline-primary" (click)="toggleShowAll()">
+      {{ showAll ? "Show Less" : "Show More" }}
+    </button>
+  </div>
+</div>

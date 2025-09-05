@@ -1,0 +1,44 @@
+
+.notice-text {
+  color: purple;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.notice-text .highlight {
+  color: red;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.form-text-info {
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-save {
+  background-color: #5b5ea6;
+  border-color: #5b5ea6;
+}
+
+.btn-cancel {
+  background-color: #6c6c6c;
+  border-color: #6c6c6c;
+}
+
+.radio-label {
+  font-weight: 600;
+  margin-right: 1rem;
+}
+
+@media (max-width: 576px) {
+  .notice-text {
+    font-size: 1rem;
+  }
+}
+
+.form-container{
+width: 800px !important;
+}

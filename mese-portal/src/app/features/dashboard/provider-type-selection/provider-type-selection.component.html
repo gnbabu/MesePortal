@@ -1,0 +1,79 @@
+<main class="py-4">
+  <p class="info-text">
+    Please note that you have
+    <span class="highlight">10 days</span> to complete your application. After
+    10 days, your information will be removed and you will have to re-start the
+    process from the beginning of the application.
+  </p>
+
+  <div class="application-select d-flex align-items-center mb-4">
+    <label for="appType" class="me-2 mb-0" style="white-space: nowrap">
+      Application Type
+    </label>
+
+    <input
+      type="text"
+      id="appType"
+      [value]="providerSelection.selectedApplicationType()"
+      readonly
+      class="form-control form-control-sm flex-grow-1"
+      style="min-width: 0; overflow-x: auto; white-space: nowrap"
+      title="{{ providerSelection.selectedApplicationType() }}"
+    />
+
+    <a
+      (click)="changeProviderTypeSelection()"
+      class="application-change ms-2 mb-0"
+      style="white-space: nowrap"
+    >
+      Change
+    </a>
+  </div>
+
+  <section class="application-buttons" aria-label="Application Types">
+    <button
+      type="button"
+      (click)="gotoCreateNewProvider(`Individual`)"
+      class="btn-application"
+    >
+      <i class="bi bi-person-fill"></i>
+      Individual
+    </button>
+
+    <button
+      type="button"
+      class="btn-application"
+      (click)="gotoCreateNewProvider(`Group`)"
+    >
+      <i class="bi bi-people-fill"></i>
+      Group
+    </button>
+
+    <button
+      type="button"
+      class="btn-application"
+      (click)="gotoCreateNewProvider(`Organization`)"
+    >
+      <i class="bi bi-building"></i>
+      Organization
+    </button>
+
+    <button
+      type="button"
+      class="btn-application"
+      (click)="gotoCreateNewProvider(`Facility/Institution`)"
+    >
+      <i class="bi bi-hospital-fill"></i>
+      Facility/Institution
+    </button>
+
+    <button
+      type="button"
+      class="btn-application"
+      (click)="gotoCreateNewProvider(`Pharmacy`)"
+    >
+      <i class="bi bi-capsule-pill"></i>
+      Pharmacy
+    </button>
+  </section>
+</main>

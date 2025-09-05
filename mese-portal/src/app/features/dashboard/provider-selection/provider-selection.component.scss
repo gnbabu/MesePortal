@@ -1,0 +1,39 @@
+.card-header-standard { background-color: #5a5f8a; color: white; }
+.card-header-ordering { background-color: #4a7a2f; color: white; }
+.card-header-change { background-color: #d1651c; color: white; }
+.card-header-mcp { background-color: #6e2e52; color: white; }
+
+.btn-standard { background-color: #5a5f8a; color: white; }
+.btn-standard:hover { background-color: #505576; color: white; }
+
+.btn-ordering { background-color: #4a7a2f; color: white; }
+.btn-ordering:hover { background-color: #3c6225; color: white; }
+
+.btn-change { background-color: #d1651c; color: white; }
+.btn-change:hover { background-color: #a34b13; color: white; }
+
+.btn-mcp { background-color: #6e2e52; color: white; }
+.btn-mcp:hover { background-color: #572642; color: white; }
+
+.card-standard, .card-medicaid-odm { border: 1px solid #5a5f8a; background-color: #f0f2fa; }
+.card-ordering, .card-medicaid-oda { border: 1px solid #4a7a2f; background-color: #e8f0d9; }
+.card-change, .card-medicaid-dodd { border: 1px solid #d1651c; background-color: #fceada; }
+.card-mcp, .card-non-medicaid-dodd { border: 1px solid #6e2e52; background-color: #f9e8f1; }
+
+.info-icon {
+  font-style: normal;
+  background-color: #444;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: default;
+}
+
+@media (max-width: 575.98px) {
+  .btn { width: 100%; }
+}

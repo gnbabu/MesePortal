@@ -1,0 +1,83 @@
+
+.info-text {
+  color: #4b278f;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
+.info-text .highlight {
+  color: #d43434;
+  font-weight: 600;
+}
+
+.application-select {
+  max-width: 350px;
+  margin: 0 auto 2rem;
+}
+
+.application-select label {
+  font-weight: 600;
+  color: #4b278f;
+}
+
+.application-select input {
+  background-color: #e9e6f7;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 6px 12px;
+  width: 100%;
+  color: #4b278f;
+  font-weight: 500;
+}
+
+.application-change {
+  font-size: 0.9rem;
+  color: #2a4bcf;
+  cursor: pointer;
+  margin-left: 8px;
+  user-select: none;
+}
+
+.application-buttons {
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.25rem;
+  padding: 0 15px;
+}
+
+.btn-application {
+  background-color: #d9d8f3;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  color: #4b278f;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.btn-application:hover,
+.btn-application:focus {
+  background-color: #4b278f;
+  color: #fff;
+  outline: none;
+}
+
+.btn-application i {
+  font-size: 1.4rem;
+}

@@ -1,0 +1,255 @@
+<div class="container py-3 form-container">
+  <p class="notice-text">
+    “Please note that you have
+    <span class="highlight">10 days to complete your application</span>. After
+    10 days, your information will be removed and you will have to re-start the
+    process from the beginning of the application.”
+  </p>
+
+  <form>
+    <!-- Application Type -->
+    <div class="row mb-3 align-items-center">
+      <label for="applicationType" class="col-sm-3 col-form-label"
+        >Application Type</label
+      >
+      <div class="col-sm-6">
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintext"
+          id="applicationType"
+          [value]="providerSelection.selectedApplicationType()"
+        />
+      </div>
+      <div class="col-sm-3">
+        <a class="form-text-info">Change</a>
+      </div>
+    </div>
+
+    <!-- Category -->
+    <div class="row mb-3 align-items-center">
+      <label for="category" class="col-sm-3 col-form-label"
+        >Category<span class="text-danger">*</span></label
+      >
+      <div class="col-sm-6">
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintext"
+          id="category"
+          [value]="providerSelection.selectedCategory()"
+        />
+      </div>
+      <div class="col-sm-3">
+        <a class="form-text-info">Change</a>
+      </div>
+    </div>
+
+    <!-- Provider Type -->
+    <div class="row mb-3">
+      <label for="providerType" class="col-sm-3 col-form-label"
+        >Provider Type<span class="text-danger">*</span></label
+      >
+      <div class="col-sm-9">
+        <select class="form-select" id="providerType" required>
+          <option value="" selected>Select provider type</option>
+          <option value="64">68 - Anesthesia Assistant Individual</option>
+          <option value="49">43 - AUDIOLOGIST INDIVIDUAL</option>
+          <option value="92">96 - Behavioral Health Para-Professionals</option>
+          <option value="72">
+            73 - CERTIFIED REGISTERED NURSE ANESTHETIST INDIVIDUAL
+          </option>
+          <option value="58">54 - CHEMICAL DEPENDENCY</option>
+          <option value="27">27 - Chiropractor Individual</option>
+          <option value="53">47 - CLINICAL COUNSELING</option>
+          <option value="62">65 - Clinical Nurse Specialist Individual</option>
+          <option value="30">30 - Dentist Individual</option>
+          <option value="115">09 - Doula</option>
+          <option value="56">52 - MARRIAGE AND FAMILY THERAPY</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- First Name -->
+    <div class="row mb-3">
+      <label for="firstName" class="col-sm-3 col-form-label"
+        >First Name<span class="text-danger">*</span></label
+      >
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="firstName" required />
+      </div>
+    </div>
+
+    <!-- Middle Name -->
+    <div class="row mb-3">
+      <label for="middleName" class="col-sm-3 col-form-label"
+        >Middle Name</label
+      >
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="middleName" />
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="row mb-3">
+      <label for="lastName" class="col-sm-3 col-form-label"
+        >Last Name<span class="text-danger">*</span></label
+      >
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="lastName" required />
+      </div>
+    </div>
+
+    <!-- Tax ID Type -->
+    <fieldset class="row mb-3">
+      <legend class="col-sm-3 col-form-label pt-0">
+        Tax ID Type<span class="text-danger">*</span>
+      </legend>
+      <div class="col-sm-9 d-flex align-items-center gap-3">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="taxIdType"
+            id="ein"
+            value="EIN"
+          />
+          <label class="form-check-label radio-label" for="ein">EIN</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="taxIdType"
+            id="ssn"
+            value="SSN"
+            checked
+          />
+          <label class="form-check-label radio-label" for="ssn"
+            ><strong>SSN</strong></label
+          >
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Tax ID -->
+    <div class="row mb-3">
+      <label for="taxId" class="col-sm-3 col-form-label"
+        >Tax ID<span class="text-danger">*</span></label
+      >
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="taxId" required />
+      </div>
+    </div>
+
+    <!-- Retro Coverage -->
+    <div class="row mb-3">
+      <label for="retroCoverage" class="col-sm-3 col-form-label"
+        >Are you requesting retro coverage?</label
+      >
+      <div class="col-sm-9 d-flex align-items-center gap-1">
+        <input class="form-check-input" type="checkbox" id="retroCoverage" />
+        <label for="retroCoverage" class="mb-0">What is this</label>
+        <a
+          class="ms-1"
+          tabindex="0"
+          data-bs-toggle="tooltip"
+          title="Retro coverage allows you to request coverage retroactively for a past effective date."
+        >
+          <i class="bi bi-info-circle text-primary"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- NPI -->
+    <div class="row mb-3">
+      <label for="npi" class="col-sm-3 col-form-label"
+        >NPI<span class="text-danger">*</span></label
+      >
+      <div class="col-sm-9 d-flex align-items-center gap-1">
+        <input type="text" class="form-control" id="npi" required />
+        <a
+          tabindex="0"
+          data-bs-toggle="tooltip"
+          title="National Provider Identifier (NPI) is a unique identification number for covered health care providers."
+        >
+          <i class="bi bi-info-circle text-primary"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- DD Contract Number -->
+    <div class="row mb-3">
+      <label for="ddContractNumber" class="col-sm-3 col-form-label"
+        >DD Contract Number (If Applicable)</label
+      >
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="ddContractNumber" />
+      </div>
+    </div>
+
+    <!-- Requested Effective Date -->
+    <div class="row mb-3">
+      <label for="requestedEffectiveDate" class="col-sm-3 col-form-label"
+        >Requested Effective Date<span class="text-danger">*</span></label
+      >
+      <div class="col-sm-9">
+        <input
+          type="date"
+          class="form-control"
+          id="requestedEffectiveDate"
+          value="2025-09-05"
+          required
+        />
+      </div>
+    </div>
+
+    <!-- Gender -->
+    <div class="row mb-3">
+      <label for="gender" class="col-sm-3 col-form-label"
+        >Gender<span class="text-danger">*</span></label
+      >
+      <div class="col-sm-9">
+        <select class="form-select" id="gender" required>
+          <option value="" disabled selected>Select gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+          <option>Prefer not to say</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="row mb-4">
+      <label for="dob" class="col-sm-3 col-form-label"
+        >Date of Birth<span class="text-danger">*</span></label
+      >
+      <div class="col-sm-9">
+        <input type="date" class="form-control" id="dob" required />
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <button
+          type="button"
+          (click)="createNewProvider()"
+          class="btn btn-save text-white px-4"
+        >
+          Save
+        </button>
+      </div>
+      <div class="col-auto">
+        <button
+          type="button"
+          (click)="cancel()"
+          class="btn btn-cancel text-white px-4"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

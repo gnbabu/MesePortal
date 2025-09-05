@@ -26,6 +26,27 @@ export const routes: Routes = [
         data: { permissions: ['DASHBOARD.VIEW'] },
       },
       {
+        path: 'provider-selection',
+        loadComponent: () =>
+          import(
+            './features/dashboard/provider-selection/provider-selection.component'
+          ).then((m) => m.ProviderSelectionComponent),
+      },
+      {
+        path: 'provider-type-selection',
+        loadComponent: () =>
+          import(
+            './features/dashboard/provider-type-selection/provider-type-selection.component'
+          ).then((m) => m.ProviderTypeSelectionComponent),
+      },
+      {
+        path: 'new-provider',
+        loadComponent: () =>
+          import(
+            './features/dashboard/new-provider/new-provider.component'
+          ).then((m) => m.NewProviderComponent),
+      },
+      {
         path: 'forbidden',
         loadComponent: () =>
           import('./pages/forbidden/forbidden.component').then(
