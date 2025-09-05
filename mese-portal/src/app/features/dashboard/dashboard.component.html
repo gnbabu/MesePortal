@@ -42,5 +42,10 @@
       noDataMessage="No providers found"
     >
     </app-data-grid>
+
+    <!-- Common Date Template -->
+    <ng-template #dateTemplate let-value="value">
+      {{ value | dateFormat : "DD-MM-YYYY" }}
+    </ng-template>
   </div>
 </div>

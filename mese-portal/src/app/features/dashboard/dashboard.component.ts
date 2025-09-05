@@ -1,32 +1,56 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { GridColumn } from '../../core/models/core.models';
 import { DataGridComponent } from '../../shared/components/data-grid/data-grid.component';
 import { Router } from '@angular/router';
 import { HasPermissionDirective } from '../../shared/directives/app-permission/has-permission.directive';
+import { DateFormatPipe } from '../../shared/pipes/date-format.pipe';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DataGridComponent, HasPermissionDirective],
+  imports: [DataGridComponent, HasPermissionDirective, DateFormatPipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {
-  private router = inject(Router);
-  columns: GridColumn[] = [
-    { field: 'regId', header: 'Reg ID', sortable: true },
-    { field: 'provider', header: 'Provider', sortable: true },
-    { field: 'status', header: 'Status', sortable: true },
-    { field: 'providerType', header: 'Provider Type' },
-    { field: 'npi', header: 'NPI' },
-    { field: 'medicaidId', header: 'Medicaid ID' },
-    { field: 'specialty', header: 'Specialty' },
-    { field: 'location', header: 'Location' },
-    { field: 'effectiveDate', header: 'Effective Date', sortable: true },
-    { field: 'submitDate', header: 'Submit Date', sortable: true },
-    { field: 'revalidationDueDate', header: 'Revalidation Due Date' },
-  ];
+export class DashboardComponent implements OnInit {
+  @ViewChild('dateTemplate', { static: true })
+  dateTemplate!: TemplateRef<any>;
 
+  columns: GridColumn[] = [];
+
+  private router = inject(Router);
+
+  ngOnInit(): void {
+    this.columns = [
+      { field: 'regId', header: 'Reg ID', sortable: true },
+      { field: 'provider', header: 'Provider', sortable: true },
+      { field: 'status', header: 'Status', sortable: true },
+      { field: 'providerType', header: 'Provider Type' },
+      { field: 'npi', header: 'NPI' },
+      { field: 'medicaidId', header: 'Medicaid ID' },
+      { field: 'specialty', header: 'Specialty' },
+      { field: 'location', header: 'Location' },
+      {
+        field: 'effectiveDate',
+        header: 'Effective Date',
+        sortable: true,
+        cellTemplate: this.dateTemplate,
+      },
+      {
+        field: 'submitDate',
+        header: 'Submit Date',
+        sortable: true,
+        cellTemplate: this.dateTemplate,
+      },
+      { field: 'revalidationDueDate', header: 'Revalidation Due Date' },
+    ];
+  }
   providers = [
     {
       regId: '562480',
