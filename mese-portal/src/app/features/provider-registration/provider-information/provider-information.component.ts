@@ -5,11 +5,17 @@ import { ToastService } from '../../../core/services/toast.service';
 import { GridColumn } from '../../../core/models/core.models';
 import { AppDropdownComponent } from '../../../shared/components/app-dropdown/app-dropdown.component';
 import { FormsModule } from '@angular/forms';
+import { AppDatepickerComponent } from '../../../shared/components/app-datepicker/app-datepicker.component';
 
 @Component({
   selector: 'app-provider-information',
   standalone: true,
-  imports: [FormsModule, DataGridComponent, AppDropdownComponent],
+  imports: [
+    FormsModule,
+    DataGridComponent,
+    AppDropdownComponent,
+    AppDatepickerComponent,
+  ],
   templateUrl: './provider-information.component.html',
   styleUrl: './provider-information.component.scss',
 })
@@ -23,6 +29,7 @@ export class ProviderInformationComponent implements OnInit {
   regions: any[] = [];
   selectedProviderType: any = null;
   selectedRegion: any = null;
+  dob: string | null = null;
 
   ngOnInit(): void {
     this.providerTypes = [
@@ -106,6 +113,10 @@ export class ProviderInformationComponent implements OnInit {
 
   onRegionChange(event: any) {
     console.log('Selected Region:', event);
+  }
+
+  onDateChanged(date: string) {
+    console.log('Date changed (event):', date);
   }
 
   goToNext() {

@@ -93,6 +93,18 @@
               (selectionChange)="onRegionChange($event)"
             ></app-dropdown>
           </div>
+          <div class="mb-4 col-md-6">
+            <label class="form-label">Date of Birth</label>
+            <app-datepicker
+              name="dob"
+              [(ngModel)]="dob"
+              format="YYYY-MM-DD"
+              placeholder="Pick a date"
+              [minDate]="'2020-01-01'"
+              [maxDate]="'2030-12-31'"
+              (dateChange)="onDateChanged($event)"
+            ></app-datepicker>
+          </div>
         </form>
       </div>
     </div>

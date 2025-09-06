@@ -34,10 +34,14 @@
               }
             ],
             "styles": [           
-              "node_modules/ngx-toastr/toastr.css",   
+              "node_modules/ngx-toastr/toastr.css",
+               "node_modules/vanillajs-datepicker/dist/css/datepicker-bs5.min.css",   
                "src/styles.scss"
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/vanillajs-datepicker/dist/js/datepicker.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -118,9 +122,13 @@
             ],
             "styles": [
               "node_modules/ngx-toastr/toastr.css",
+              "node_modules/vanillajs-datepicker/dist/css/datepicker-bs5.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/vanillajs-datepicker/dist/js/datepicker.min.js"
+            ]
           }
         }
       }
