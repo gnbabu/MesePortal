@@ -292,7 +292,34 @@ footer {
     color: #fff;
   }
 }
+
+
+/* Toast container fixed on right side */
 .toast-container {
-  min-width: 400px !important;
-  max-width: 700px !important;   
+  position: fixed !important;      /* fix to viewport */
+  bottom: 1rem !important;         /* distance from bottom */
+  right: 1rem !important;          /* align to right */
+  display: flex;
+  flex-direction: column;          /* stack toasts vertically */
+  pointer-events: none;            /* clicks pass through gaps */
+  z-index: 9999;                   /* stay on top */
+  padding: 0 1rem;
+  align-items: flex-end;           /* right-align toasts */
+}
+
+/* Individual toast: responsive width and wrapping */
+.custom-toast {
+  display: inline-block;
+  max-width: 700px;                /* max width for long messages */
+  min-width: 400px;                /* min width for short messages */
+  white-space: normal !important;  /* allow multiline */
+  word-break: break-word !important;
+  pointer-events: auto;            /* allow interaction */
+}
+
+/* Message inside toast */
+.custom-toast-msg {
+  white-space: normal !important;
+  word-break: break-word !important;
+  line-height: 1.4;
 }
