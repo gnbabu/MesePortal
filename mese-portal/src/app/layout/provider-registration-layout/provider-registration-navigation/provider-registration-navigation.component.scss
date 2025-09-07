@@ -146,6 +146,11 @@
       }
     }
   }
+  .dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #5561d8;
+}
 }
 
 /* Make dropdown scrollable when height exceeds 500px */
