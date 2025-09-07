@@ -1,0 +1,200 @@
+<div class="app-grid">
+  <!-- Pagination Header -->
+  <div
+    class="d-flex justify-content-between align-items-center mb-2 pagination-header"
+    *ngIf="pagingEnabled"
+  >
+    <div class="page-size-selector">
+      Page Size:
+      <select
+        [(ngModel)]="pageSize"
+        (change)="changePageSize(pageSize)"
+        class="form-select d-inline-block w-auto custom-page-size"
+      >
+        <option *ngFor="let size of [5, 10, 20, 50]" [value]="size">
+          {{ size }}
+        </option>
+      </select>
+    </div>
+    <div class="page-info">
+      Showing page {{ currentPage }} of {{ totalPages() }} (Total Records:
+      {{ filteredData.length || 0 }})
+    </div>
+  </div>
+
+  <table class="table table-bordered table-striped grid-table">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns" class="position-relative">
+          <!-- Column Header -->
+          <div class="d-flex align-items-center justify-content-between">
+            <span (click)="col.sortable ? changeSort(col.field) : null">
+              {{ col.header }}
+              <span *ngIf="col.sortable">
+                {{
+                  sortField === col.field
+                    ? sortDirection === "asc"
+                      ? "▲"
+                      : "▼"
+                    : ""
+                }}
+              </span>
+            </span>
+          </div>
+
+          <!-- Filter Controls (under header) -->
+          <div
+            *ngIf="
+              ['text', 'number', 'date', 'datetime', 'select'].includes(
+                col.type
+              )
+            "
+            class="filter-wrapper mt-1 d-flex align-items-center"
+          >
+            <ng-container [ngSwitch]="col.type">
+              <input
+                *ngSwitchCase="'text'"
+                type="text"
+                [(ngModel)]="filterValues[col.field]"
+                class="filter-input flex-grow-1"
+                placeholder="Filter..."
+              />
+              <input
+                *ngSwitchCase="'number'"
+                type="number"
+                [(ngModel)]="filterValues[col.field]"
+                class="filter-input flex-grow-1"
+                placeholder="Filter..."
+              />
+              <input
+                *ngSwitchCase="'date'"
+                type="date"
+                [(ngModel)]="filterValues[col.field]"
+                class="filter-input flex-grow-1"
+              />
+              <input
+                *ngSwitchCase="'datetime'"
+                type="datetime-local"
+                [(ngModel)]="filterValues[col.field]"
+                class="filter-input flex-grow-1"
+              />
+              <select
+                *ngSwitchCase="'select'"
+                [(ngModel)]="filterValues[col.field]"
+                class="filter-input flex-grow-1"
+              >
+                <option value="">-- Select --</option>
+                <option
+                  *ngFor="let opt of col.filterOptions"
+                  [value]="opt.value"
+                >
+                  {{ opt.label }}
+                </option>
+              </select>
+            </ng-container>
+
+            <!-- Gear Icon -->
+            <button
+              class="filter-toggle btn btn-sm btn-light ms-1"
+              (click)="toggleFilterMenu(col.field)"
+            >
+              ⚙
+            </button>
+
+            <!-- Filter Dropdown -->
+            <div class="filter-menu" *ngIf="activeFilterMenu === col.field">
+              <label>Condition:</label>
+              <select
+                class="form-select form-select-sm mb-2"
+                [(ngModel)]="filterConditions[col.field]"
+              >
+                <option value="">-- Select --</option>
+                <option
+                  *ngFor="let cond of getConditions(col.type)"
+                  [value]="cond"
+                >
+                  {{ cond }}
+                </option>
+              </select>
+
+              <div *ngIf="filterConditions[col.field] === 'between'">
+                <input
+                  [type]="
+                    col.type === 'date'
+                      ? 'date'
+                      : col.type === 'datetime'
+                      ? 'datetime-local'
+                      : 'number'
+                  "
+                  placeholder="From"
+                  [(ngModel)]="filterRange[col.field].from"
+                  class="form-control form-control-sm mb-1"
+                />
+                <input
+                  [type]="
+                    col.type === 'date'
+                      ? 'date'
+                      : col.type === 'datetime'
+                      ? 'datetime-local'
+                      : 'number'
+                  "
+                  placeholder="To"
+                  [(ngModel)]="filterRange[col.field].to"
+                  class="form-control form-control-sm"
+                />
+              </div>
+
+              <div class="btn-group mt-2">
+                <button
+                  class="btn btn-primary btn-sm"
+                  (click)="applyFilter(col.field)"
+                >
+                  Apply
+                </button>
+                <button
+                  class="btn btn-secondary btn-sm"
+                  (click)="resetFilter(col.field)"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngIf="pagedData?.length === 0">
+        <td [attr.colspan]="columns.length" class="text-center text-muted">
+          No records found
+        </td>
+      </tr>
+      <tr *ngFor="let row of pagedData">
+        <td *ngFor="let col of columns">{{ row[col.field] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div
+    class="d-flex justify-content-end mt-3"
+    *ngIf="pagingEnabled && totalPages() > 1"
+  >
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+      </li>
+      <li
+        class="page-item"
+        *ngFor="let p of [].constructor(totalPages()); let i = index"
+        [class.active]="i + 1 === currentPage"
+      >
+        <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages()">
+        <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>

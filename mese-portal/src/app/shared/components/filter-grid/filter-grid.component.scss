@@ -1,0 +1,176 @@
+/* Grid wrapper with scroll */
+.app-grid {
+  max-height: 70vh;
+  overflow: auto;
+  border-radius: 6px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      th {
+        background: #5c3c9e;
+        color: #fff;
+        font-weight: 600;
+        text-align: center;
+        vertical-align: middle;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        padding: 6px;
+
+        .filter-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          margin-top: 4px;
+          flex-wrap: wrap;
+        }
+
+        .filter-input {
+          flex-grow: 1;
+          padding: 4px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          font-size: 0.85rem;
+        }
+
+        .filter-toggle {
+          flex-shrink: 0;
+          padding: 2px 6px;
+          font-size: 0.8rem;
+          cursor: pointer;
+        }
+
+        /* Bootstrap Dropdown for Filters */
+        .filter-menu {
+           position: absolute;
+            top: 100%;
+            left: 0;
+            display: block;
+            min-width: 200px;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            background-color: #fff;
+            z-index: 1000;
+
+          label {
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+            display: block;
+            font-weight: 500;
+          }
+
+          select, input {
+            width: 100%;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 4px 6px;
+          }
+
+          .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 6px;
+
+            .btn {
+              font-size: 0.8rem;
+              padding: 4px 6px;
+              border-radius: 4px;
+            }
+
+            .btn-primary {
+              background-color: #5c3c9e;
+              border-color: #5c3c9e;
+
+              &:hover {
+                background-color: #43297d;
+                border-color: #43297d;
+              }
+            }
+
+            .btn-secondary {
+              background-color: #eee;
+              border-color: #ccc;
+              color: #333;
+
+              &:hover {
+                background-color: #ddd;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr:nth-child(odd) { background: #f9fbfd; }
+      tr:nth-child(even) { background: #eef3f9; }
+      tr:hover { background: #e0e7f1 !important; }
+
+      td {
+        padding: 0.55rem;
+        vertical-align: middle;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .pagination-header {
+    background-color: #f9f9fb;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .page-size-selector {
+      font-weight: 500;
+      color: #444;
+
+      .custom-page-size {
+        margin-left: 6px;
+        border: 1px solid #5c3c9e;
+        border-radius: 6px;        
+        font-size: 14px;
+        color: #5c3c9e;
+
+        &:focus {
+          outline: none;
+          border-color: #43297d;
+          box-shadow: 0 0 4px rgba(92, 60, 158, 0.5);
+        }
+      }
+    }
+
+    .page-info {
+      font-style: italic;
+      color: #5c3c9e;
+    }
+  }
+
+  .pagination {
+    .page-item {
+      .page-link {
+        color: #5c3c9e;
+        border: 1px solid #5c3c9e;
+        background-color: #fff;
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+      &.active .page-link {
+        background-color: #5c3c9e;
+        border-color: #5c3c9e;
+        color: #fff;
+      }
+    }
+  }
+}

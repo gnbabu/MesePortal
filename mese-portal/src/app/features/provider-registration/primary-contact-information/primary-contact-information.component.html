@@ -30,6 +30,14 @@
 
       <!-- Right Controls (75%) -->
       <div class="col-12 col-md-9"></div>
+      <div>
+        <app-filter-grid
+          [columns]="columns"
+          [data]="employees"
+          [sortingMode]="'client'"
+        >
+        </app-filter-grid>
+      </div>
     </div>
 
     <!-- Action Bar -->
