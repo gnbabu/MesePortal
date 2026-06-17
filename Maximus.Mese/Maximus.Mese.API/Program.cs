@@ -1,4 +1,5 @@
 using System.Text;
+using Maximus.Mese.APIFramework.Helper;
 using Maximus.Mese.APIFramework.Interfaces;
 using Maximus.Mese.APIFramework.Repositories;
 using Maximus.Mese.Core.DBHelpers;
@@ -93,7 +94,10 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+var connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection");
 
+SqlDbHelper.Initialize(connectionString);
 var app = builder.Build();
 
 // ------------------------------
