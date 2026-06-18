@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maximus.Mese.Core", "Maximu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maximus.Mese.APIFramework", "Maximus.Mese.APIFramework\Maximus.Mese.APIFramework.csproj", "{9DD1C2EE-2B85-4784-9239-23A5BFA93D20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelGenerator", "ModelGenerator\ModelGenerator.csproj", "{B776BAA8-0ACA-4654-96D1-937B039D10B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9DD1C2EE-2B85-4784-9239-23A5BFA93D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DD1C2EE-2B85-4784-9239-23A5BFA93D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DD1C2EE-2B85-4784-9239-23A5BFA93D20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B776BAA8-0ACA-4654-96D1-937B039D10B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B776BAA8-0ACA-4654-96D1-937B039D10B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B776BAA8-0ACA-4654-96D1-937B039D10B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B776BAA8-0ACA-4654-96D1-937B039D10B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
