@@ -24,28 +24,22 @@ namespace ModelGenerator.Services
         }
 
         public string GenerateClass(
-            string procedureName,
-            List<ProcedureColumn> columns)
+              string className,
+              List<ProcedureColumn> columns)
         {
-            var className =
-                BuildClassName(procedureName);
-
             var sb = new StringBuilder();
 
             sb.AppendLine("namespace GeneratedModels;");
             sb.AppendLine();
 
-            sb.AppendLine(
-                $"public class {className}");
-
+            sb.AppendLine($"public class {className}");
             sb.AppendLine("{");
 
             foreach (var column in columns)
             {
-                var type =
-                    SqlTypeMapper.GetType(
-                        column.SqlTypeId,
-                        column.IsNullable);
+                var type = SqlTypeMapper.GetType(
+                    column.SqlTypeId,
+                    column.IsNullable);
 
                 sb.AppendLine(
                     $"    public {type} {column.ColumnName} {{ get; set; }}");
@@ -57,3 +51,4 @@ namespace ModelGenerator.Services
         }
     }
 }
+
