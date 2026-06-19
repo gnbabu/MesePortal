@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using ModelGenerator.Models;
 
@@ -17,55 +13,125 @@ namespace ModelGenerator.Services
             _connectionString = connectionString;
         }
 
-        public async Task<List<ProcedureColumn>>
-            GetProcedureColumnsAsync(
-                string procedureName)
+        public async Task<List<ResultSetInfo>> GetProcedureResultSetsAsync(string procedureName)
         {
-            var columns =
-                new List<ProcedureColumn>();
+            var resultSets = new List<ResultSetInfo>();
 
-            var sql = $@"
-                        SELECT
-                            name,
-                            system_type_id,
-                            is_nullable
-                        FROM sys.dm_exec_describe_first_result_set
-                        (
-                            'EXEC {procedureName}',
-                            NULL,
-                            0
-                        )
-                        WHERE name IS NOT NULL";
-
-            await using var conn =
-                new SqlConnection(_connectionString);
-
+            await using var conn = new SqlConnection(_connectionString);
             await conn.OpenAsync();
 
-            await using var cmd =
-                new SqlCommand(sql, conn);
+            await using var cmd = new SqlCommand(procedureName, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-            await using var reader =
-                await cmd.ExecuteReaderAsync();
+            var parameters = await GetProcedureParametersAsync(conn, procedureName);
+
+            foreach (var parameter in parameters)
+            {
+                cmd.Parameters.AddWithValue(parameter.Name, GetSampleValue(parameter.SqlType));
+            }
+
+            await using var reader = await cmd.ExecuteReaderAsync(CommandBehavior.SchemaOnly);
+
+            int resultSetNumber = 1;
+
+            do
+            {
+                var schema = reader.GetColumnSchema();
+
+                if (schema.Count > 0)
+                {
+                    var resultSet = new ResultSetInfo
+                    {
+                        ResultSetNumber = resultSetNumber
+                    };
+
+                    foreach (var column in schema)
+                    {
+                        resultSet.Columns.Add(
+                            new ProcedureColumn
+                            {
+                                ColumnName = column.ColumnName,
+                                DataType = column.DataType,
+                                IsNullable = column.AllowDBNull ?? true
+                            });
+                    }
+
+                    resultSets.Add(resultSet);
+                }
+
+                resultSetNumber++;
+
+            }
+            while (await reader.NextResultAsync());
+
+            return resultSets;
+        }
+
+        private async Task<List<ParameterInfo>> GetProcedureParametersAsync(SqlConnection conn, string procedureName)
+        {
+            var parameters = new List<ParameterInfo>();
+
+            string sql = @"
+                        SELECT
+                            p.name,
+                            t.name AS SqlType
+                        FROM sys.parameters p
+                        INNER JOIN sys.types t
+                            ON p.user_type_id = t.user_type_id
+                        WHERE p.object_id = OBJECT_ID(@ProcedureName)
+                        ORDER BY p.parameter_id";
+
+            await using var cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@ProcedureName", procedureName);
+
+            await using var reader = await cmd.ExecuteReaderAsync();
 
             while (await reader.ReadAsync())
             {
-                columns.Add(new ProcedureColumn
-                {
-                    ColumnName =
-                        reader["name"].ToString(),
-
-                    SqlTypeId =
-                        Convert.ToInt32(
-                            reader["system_type_id"]),
-
-                    IsNullable =
-                        Convert.ToBoolean(
-                            reader["is_nullable"])
-                });
+                parameters.Add(
+                    new ParameterInfo
+                    {
+                        Name = reader["name"].ToString(),
+                        SqlType = reader["SqlType"].ToString()
+                    });
             }
 
-            return columns;
+            return parameters;
+        }
+
+
+        private static object GetSampleValue(string sqlType)
+        {
+            return sqlType.ToLower() switch
+            {
+                "int" => 1,
+                "bigint" => 1L,
+                "smallint" => (short)1,
+                "tinyint" => (byte)1,
+
+                "bit" => false,
+
+                "varchar" => "Test",
+                "nvarchar" => "Test",
+                "char" => "Test",
+                "nchar" => "Test",
+
+                "decimal" => 1m,
+                "numeric" => 1m,
+                "money" => 1m,
+
+                "float" => 1.0,
+                "real" => 1.0f,
+
+                "datetime" => DateTime.Now,
+                "datetime2" => DateTime.Now,
+                "date" => DateTime.Today,
+
+                "uniqueidentifier" => Guid.NewGuid(),
+
+                _ => DBNull.Value
+            };
         }
     }
 }

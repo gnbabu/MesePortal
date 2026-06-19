@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using ModelGenerator.Services;
+﻿using ModelGenerator.Services;
 
 var connectionString =
     @"Server=DESKTOP-BNTHM9S\SQLEXPRESS;
@@ -7,7 +6,6 @@ var connectionString =
       User Id=mese_user;
       Password=Gopavaram@123;
       TrustServerCertificate=True;";
-
 
 var procedures = new Dictionary<string, string>
 {
@@ -17,12 +15,12 @@ var procedures = new Dictionary<string, string>
     { "ohpnm.usp_GetUserRolesPermissions", "UserRolesPermissionsModel" },
     { "ohpnm.usp_ValidateUser", "ValidateUserModel" }
 };
+
 var outputFolder = Path.Combine(Directory.GetCurrentDirectory(), "GeneratedModels");
 
 Directory.CreateDirectory(outputFolder);
 
-var metadataReader =
-    new SqlMetadataReader(connectionString);
+var metadataReader = new SqlMetadataReader(connectionString);
 
 var generator = new ModelGeneratorService();
 
@@ -33,30 +31,40 @@ foreach (var procedure in procedures)
         string procedureName = procedure.Key;
         string modelName = procedure.Value;
 
-        Console.WriteLine($"Processing {procedureName}");
+        Console.WriteLine(
+            $"Processing {procedureName}");
 
-        var columns =
-            await metadataReader.GetProcedureColumnsAsync(procedureName);
+        var resultSets =
+            await metadataReader.GetProcedureResultSetsAsync(procedureName);
 
-        if (!columns.Any())
+        if (!resultSets.Any())
         {
-            Console.WriteLine($"No columns found for {procedureName}");
+            Console.WriteLine(
+                $"No result sets found for {procedureName}");
+
             continue;
         }
 
-        var classCode =generator.GenerateClass(modelName, columns);
+        var files =
+            generator.GenerateModels(
+                modelName,
+                resultSets);
 
-        var filePath =
-            Path.Combine(outputFolder, $"{modelName}.cs");
+        foreach (var file in files)
+        {
+            var filePath = Path.Combine(outputFolder, file.Key);
 
-        await File.WriteAllTextAsync(filePath, classCode);
+            await File.WriteAllTextAsync(filePath, file.Value);
 
-        Console.WriteLine($"Generated {modelName}");
+            Console.WriteLine($"Generated {file.Key}");
+        }
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Failed: {procedure.Key}");
-        Console.WriteLine(ex.Message);
+        Console.WriteLine(
+            $"Failed: {procedure.Key}");
+
+        Console.WriteLine(ex.ToString());
     }
 }
 
